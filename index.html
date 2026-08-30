@@ -213,6 +213,11 @@
   .pc-tag.r1 { color:#04140d; background: var(--cash); }
   .pc-tag.r2 { color:#0e2b12; background: var(--sol); }
   .pc-tag.r3 { color:#3a1c04; background: var(--blue); }
+  .pc-tag.r5 { color:#3a1c04; background: #ff9a3d; }
+  .pcard-edge { text-decoration: none; color: inherit; }
+  .pcard-edge:hover { border-color: #ff9a3d; }
+  .pcard-edge .pc-split .me { background: #ff9a3d; height: 100%; }
+  .pcard-edge .pc-split em { font-style: normal; color: #ff9a3d; font-weight: 600; }
   .pc-tag.r4 { color:#fff; background: var(--small); }
   .pc-desc { font-size: 12px; color: var(--muted); line-height: 1.4; }
   .pc-split { display: flex; align-items: center; gap: 8px; font-family: ui-monospace, monospace; font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }
@@ -355,6 +360,7 @@
   #live .lp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:8px}
   @media(max-width:820px){#live .lp-grid{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:480px){#live .lp-grid{grid-template-columns:1fr}}
+  .lp-edge{border-color:color-mix(in srgb,#ff9a3d 45%,var(--card-line))!important}.lp-edge .lp-tier{color:#ff9a3d}.lp-since a{color:#ff9a3d;text-decoration:none}
   .lp-card{background:var(--surface);border:1px solid var(--card-line);border-radius:16px;padding:20px 18px}
   .lp-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
   .lp-name{font-weight:700;font-size:17px}
@@ -503,8 +509,12 @@
           <span class="mini" style="--pie: conic-gradient(var(--surface) 0 0.55%, var(--accent) 0.55% 89.45%, var(--surface) 89.45% 90.55%, var(--gold) 90.55% 99.45%, var(--surface) 99.45% 100%);"></span>
           <span class="pc-info"><span class="pc-top"><b>Apex</b><span class="pc-tag r4">Aggressive</span></span><span class="pc-desc">Swing big — high-growth and speculative names, fully invested with a gold &amp; silver hedge.</span><span class="pc-split"><span class="bar"><span class="st" style="width:90%"></span><span class="gd" style="width:10%"></span></span><span><b>90%</b> stocks · 10% metals</span></span></span>
         </button>
+        <a class="pcard pcard-edge" href="edge.html" data-p="Edge">
+          <span class="mini" style="--pie: conic-gradient(var(--surface) 0 0.55%, #ff9a3d 0.55% 19.45%, var(--surface) 19.45% 20.55%, #ffb86b 20.55% 39.45%, var(--surface) 39.45% 40.55%, #ff9a3d 40.55% 59.45%, var(--surface) 59.45% 60.55%, #ffb86b 60.55% 79.45%, var(--surface) 79.45% 80.55%, #ff9a3d 80.55% 99.45%, var(--surface) 99.45% 100%);"></span>
+          <span class="pc-info"><span class="pc-top"><b>Edge</b><span class="pc-tag r5">Memecoins</span></span><span class="pc-desc">The aggressive wing — a five-name Solana memecoin basket, equal-weight, drift-band rebalanced 24/7 behind hard risk rails.</span><span class="pc-split"><span class="bar"><span class="me" style="width:100%"></span></span><span><b>100%</b> memecoins · <em>see it live &rarr;</em></span></span></span>
+        </a>
         <div class="key">
-          <span><i style="background:var(--accent)"></i>Stocks</span><span><i style="background:var(--gold)"></i>Metals</span><span><i style="background:var(--cash)"></i>Cash</span>
+          <span><i style="background:var(--accent)"></i>Stocks</span><span><i style="background:var(--gold)"></i>Metals</span><span><i style="background:var(--cash)"></i>Cash</span><span><i style="background:#ff9a3d"></i>Memecoins</span>
         </div>
       </aside>
     </div>
@@ -557,13 +567,14 @@
     <div class="sec-head rise">
       <p class="eyebrow">Live · real prices</p>
       <h2>Not a backtest. Our portfolios, tracked live.</h2>
-      <p>Four paper portfolios, seeded at $10,000 each on Aug 20, 2026, marked in real time against live tokenized-equity prices on Solana. Same drift-band engine, same published weights — watch the risk ladder do exactly what it says.</p>
+      <p>Five paper portfolios, seeded at $10,000 each on Aug 20, 2026, marked in real time against live Solana prices — four on tokenized equities, plus Edge on memecoins. Same drift-band engine, same published weights — watch the risk ladder do exactly what it says.</p>
     </div>
     <div class="lp-grid">
       <div class="lp-card rise" data-vault="Roost"><div class="lp-top"><span class="lp-name">Roost</span><span class="lp-tier">Conservative</span></div><div class="lp-nav" data-nav>—</div><div class="lp-ret" data-ret>tracking…</div><div class="lp-since">since Aug 20, 2026 · $10,000 start</div></div>
       <div class="lp-card rise" data-vault="Perch"><div class="lp-top"><span class="lp-name">Perch</span><span class="lp-tier">Moderate</span></div><div class="lp-nav" data-nav>—</div><div class="lp-ret" data-ret>tracking…</div><div class="lp-since">since Aug 20, 2026 · $10,000 start</div></div>
       <div class="lp-card rise" data-vault="Soar"><div class="lp-top"><span class="lp-name">Soar</span><span class="lp-tier">Growth</span></div><div class="lp-nav" data-nav>—</div><div class="lp-ret" data-ret>tracking…</div><div class="lp-since">since Aug 20, 2026 · $10,000 start</div></div>
       <div class="lp-card rise" data-vault="Apex"><div class="lp-top"><span class="lp-name">Apex</span><span class="lp-tier">Aggressive</span></div><div class="lp-nav" data-nav>—</div><div class="lp-ret" data-ret>tracking…</div><div class="lp-since">since Aug 20, 2026 · $10,000 start</div></div>
+      <div class="lp-card rise lp-edge" data-vault="Edge"><div class="lp-top"><span class="lp-name">Edge</span><span class="lp-tier">Memecoins</span></div><div class="lp-nav" data-nav>—</div><div class="lp-ret" data-ret>tracking…</div><div class="lp-since">since Aug 20, 2026 · <a href="edge.html">details</a></div></div>
     </div>
     <p class="lp-note">Illustrative paper portfolios — real live prices, <strong>not real money and not a live product</strong>. Kestrel is in development. Nothing here is an offer, advice, or a projection of returns.</p>
   </section>
@@ -728,7 +739,7 @@
     mlabs=Array.prototype.slice.call(monthsEl.querySelectorAll(".mlab"));
   })();
   var prog=$("kProg"), playBtn=$("kPlay"), bar=$("kBar"), leg=$("kLeg"), eventEl=$("kEvent");
-  var scnTabs=$("kScn"), pcards=Array.prototype.slice.call($("kRail").querySelectorAll(".pcard"));
+  var scnTabs=$("kScn"), pcards=Array.prototype.slice.call($("kRail").querySelectorAll(".pcard:not(.pcard-edge)"));
 
   // tokenized-stocks column — every ticker backlinks to its Backpack page
   var STOCKS=[["SGOV","Treasuries"],["GLD","Gold"],["SILV","Silver"],["SPY","S&P 500 ETF"],["QQQ","Nasdaq-100 ETF"],["SCHD","Dividend ETF"],["AAPL","Apple"],["MSFT","Microsoft"],["BRK.B","Berkshire"],["JPM","JPMorgan"],["AMZN","Amazon"],["NVDA","Nvidia"],["META","Meta"],["HOOD","Robinhood"],["PLTR","Palantir"],["TSLA","Tesla"],["MU","Micron"],["SPCX","SpaceX"],["MSTR","Strategy"],["COIN","Coinbase"]];
@@ -964,10 +975,16 @@
 
 <script>
 (function(){
-  var UNITS={"Roost": {"USDC": 5000, "AAPL": 3.1565, "SPY": 5.2081}, "Perch": {"USDC": 2500, "SILV": 3.7755, "GLD": 0.6035, "AAPL": 3.1835, "MSFT": 2.0716, "BRK.B": 2.0067, "QQQ": 2.0988, "SPY": 3.2483}, "Soar": {"USDC": 1000, "SILV": 3.0221, "GLD": 0.7215, "META": 1.8299, "HOOD": 10.1991, "AMZN": 4.5803, "MSFT": 2.6969, "QQQ": 2.7995, "NVDA": 9.1657}, "Apex": {"USDC": 0.0, "SILV": 6.7157, "GLD": 1.6033, "MU": 0.8087, "COIN": 5.1223, "TSLA": 2.9425, "MSTR": 9.9246, "HOOD": 13.5988, "SPCX": 13.3526, "NVDA": 9.1657}}, MINTS={"SPY": "XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W", "AAPL": "XsbEhLAtcf6HdfpFZ5xEMdqW8nfAvcsP5bdudRLJzJp", "QQQ": "Xs8S1uUs1zvS2p7iwtsG3b6fkhpvmwz4GYU3gWAmWHZ", "MSFT": "XspzcW1PRtgf6Wj92HCiZdjzKCyFekVD8P5Ueh3dRMX", "GLD": "Xsv9hRk1z5ystj9MhnA7Lq4vjSsLwzL2nxrwmwtD3re", "AMZN": "Xs3eBt7uRfJX8QUs4suhyU8p2M6DoUDrJyWBa8LLZsg", "NVDA": "Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh", "META": "Xsa62P5mvPszXL1krVUnU5ar38bBSVcWAB6fmPCo5Zu", "HOOD": "XsvNBAYkrDRNhA7wPHQfX3ZUXZyZLdnCQDfHZ56bzpg", "TSLA": "XsDoVfqeBukxuZHWhdvWHBhgEHjGNst4MLodqsJHzoB", "MU": "MUxEsUKSMACyw5fZf68wxf5FLnZVhtU9CwH8uNNGay1", "SPCX": "SPCXxcqXj6e5dJDVNovHN8744zkbhM2bYudU45BimGb", "MSTR": "MSTRdWXMeZxdE8osAQy3fA4rvTY5rgummDSMEx6U7Nz", "COIN": "Xs7ZdzSHLU9ftNJsii5fCeJhoRWSC32SQGzGQtePxNu", "SILV": "SiLVFMgD3eD2rgK628NbTBq9MnuJF5FW2CRaVyTB35L", "BRK.B": "Xs6B6zawENwAbWVi7w92rjazLuAr5Az59qgWKcNb45x"};
+  var UNITS={"Edge": {"ANSEM": 11971.5202, "KESTREL": 61913768.7853, "FARTCOIN": 22174.9285, "fone": 193974.5167, "PINK": 3902070.7713}, "Roost": {"USDC": 5000, "AAPL": 3.1565, "SPY": 5.2081}, "Perch": {"USDC": 2500, "SILV": 3.7755, "GLD": 0.6035, "AAPL": 3.1835, "MSFT": 2.0716, "BRK.B": 2.0067, "QQQ": 2.0988, "SPY": 3.2483}, "Soar": {"USDC": 1000, "SILV": 3.0221, "GLD": 0.7215, "META": 1.8299, "HOOD": 10.1991, "AMZN": 4.5803, "MSFT": 2.6969, "QQQ": 2.7995, "NVDA": 9.1657}, "Apex": {"USDC": 0.0, "SILV": 6.7157, "GLD": 1.6033, "MU": 0.8087, "COIN": 5.1223, "TSLA": 2.9425, "MSTR": 9.9246, "HOOD": 13.5988, "SPCX": 13.3526, "NVDA": 9.1657}}, MINTS={"ANSEM": "9cRCn9rGT8V2imeM2BaKs13yhMEais3ruM3rPvTGpump", "KESTREL": "G9ALRz5jtq6wG7dijjsb1TvkGatwPNcnhbAGECVQpump", "FARTCOIN": "9BB6NFEcjBCtnNLFko2FqVQBq8HHM13kCyYcdQbgpump", "fone": "CTPoyCwkjMvoJwU4xvZZqoD8tiYk6yDchySiN5gGpump", "PINK": "AVBN6kXdaw27ySuvMevKYzNTL8d39b7sGQFDCmsvpump", "SPY": "XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W", "AAPL": "XsbEhLAtcf6HdfpFZ5xEMdqW8nfAvcsP5bdudRLJzJp", "QQQ": "Xs8S1uUs1zvS2p7iwtsG3b6fkhpvmwz4GYU3gWAmWHZ", "MSFT": "XspzcW1PRtgf6Wj92HCiZdjzKCyFekVD8P5Ueh3dRMX", "GLD": "Xsv9hRk1z5ystj9MhnA7Lq4vjSsLwzL2nxrwmwtD3re", "AMZN": "Xs3eBt7uRfJX8QUs4suhyU8p2M6DoUDrJyWBa8LLZsg", "NVDA": "Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh", "META": "Xsa62P5mvPszXL1krVUnU5ar38bBSVcWAB6fmPCo5Zu", "HOOD": "XsvNBAYkrDRNhA7wPHQfX3ZUXZyZLdnCQDfHZ56bzpg", "TSLA": "XsDoVfqeBukxuZHWhdvWHBhgEHjGNst4MLodqsJHzoB", "MU": "MUxEsUKSMACyw5fZf68wxf5FLnZVhtU9CwH8uNNGay1", "SPCX": "SPCXxcqXj6e5dJDVNovHN8744zkbhM2bYudU45BimGb", "MSTR": "MSTRdWXMeZxdE8osAQy3fA4rvTY5rgummDSMEx6U7Nz", "COIN": "Xs7ZdzSHLU9ftNJsii5fCeJhoRWSC32SQGzGQtePxNu", "SILV": "SiLVFMgD3eD2rgK628NbTBq9MnuJF5FW2CRaVyTB35L", "BRK.B": "Xs6B6zawENwAbWVi7w92rjazLuAr5Az59qgWKcNb45x"};
   var mints=Object.values(MINTS);
   fetch("https://lite-api.jup.ag/price/v3?ids="+mints.join(","))
-    .then(function(r){if(!r.ok)throw 0;return r.json()})
+    .then(function(r){if(!r.ok)throw 0;return r.json()}).catch(function(){return {}})
+    .then(function(px){
+      var missing=Object.values(MINTS).filter(function(m){var r=px[m];return !(r&&(r.usdPrice||r.price)>0)});
+      if(!missing.length)return px;
+      return fetch("https://api.dexscreener.com/tokens/v1/solana/"+missing.join(",")).then(function(r){return r.json()}).then(function(arr){
+        (arr||[]).forEach(function(p){var m=p.baseToken&&p.baseToken.address;if(m&&!px[m]&&Number(p.priceUsd)>0)px[m]={usdPrice:Number(p.priceUsd)}});return px}).catch(function(){return px});
+    })
     .then(function(px){
       var price={USDC:1};
       for(var t in MINTS){var row=px[MINTS[t]];var p=row&&(row.usdPrice||row.price);if(p>0)price[t]=Number(p);}

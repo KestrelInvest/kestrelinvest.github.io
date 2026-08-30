@@ -4,18 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Portfolios — Kestrel</title>
-<meta name="description" content="Four risk-laddered Kestrel portfolios of tokenized US stocks, ETFs, gold and silver — full holdings, target allocations, and how the agentic advisor rebalances back to target.">
+<meta name="description" content="Five Kestrel portfolios — four risk-laddered tiers of tokenized US stocks, ETFs, gold and silver, plus Edge, the memecoin wing — full holdings, target allocations, and how the agentic advisor rebalances back to target.">
 <link rel="canonical" href="https://kestrelinvest.xyz/portfolios.html">
 <meta name="theme-color" content="#0e9f6e" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#04140d" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Kestrel">
 <meta property="og:title" content="Portfolios — Kestrel">
-<meta property="og:description" content="Four risk-laddered Kestrel portfolios of tokenized US stocks, ETFs, gold and silver — full holdings, target allocations, and how the agentic advisor rebalances back to target.">
+<meta property="og:description" content="Five Kestrel portfolios — four risk-laddered tiers of tokenized US stocks, ETFs, gold and silver, plus Edge, the memecoin wing — full holdings, target allocations, and how the agentic advisor rebalances back to target.">
 <meta property="og:url" content="https://kestrelinvest.xyz/portfolios.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Portfolios — Kestrel">
-<meta name="twitter:description" content="Four risk-laddered Kestrel portfolios of tokenized US stocks, ETFs, gold and silver — full holdings, target allocations, and how the agentic advisor rebalances back to target.">
+<meta name="twitter:description" content="Five Kestrel portfolios — four risk-laddered tiers of tokenized US stocks, ETFs, gold and silver, plus Edge, the memecoin wing — full holdings, target allocations, and how the agentic advisor rebalances back to target.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230e9f6e'/%3E%3Cg fill='%23eafff4'%3E%3Cpath d='M47 52 C 37 40 27 31 13 26 C 20 40 30 51 43 57 Z'/%3E%3Cpath d='M45 55 C 42 49 43 42 49 38 C 47 35 46 31 49 28 C 52 31 53 35 52 39 C 58 43 60 51 56 60 L 68 82 L 57 73 L 54 88 L 50 71 C 47 66 46 61 45 55 Z'/%3E%3Cpath d='M51 40 C 63 27 76 19 93 15 C 80 28 67 40 55 47 Z'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -113,7 +113,8 @@
   .pf-title p { margin: 5px 0 0; color: var(--muted); font-size: 14.5px; }
   .pf-tag { flex: none; font-family: ui-monospace, monospace; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; font-weight: 650; padding: 6px 11px; border-radius: 8px; }
   .r1 { color:#04140d; background: var(--cash); } .r2 { color:#0e2b12; background: #a3cc3a; }
-  .r3 { color:#3a1c04; background: #e6b93e; } .r4 { color:#fff; background: #d2452f; }
+  .r3 { color:#3a1c04; background: #e6b93e; } .r4 { color:#fff; background: #d2452f; } .r5 { color:#3a1c04; background: #ff9a3d; }
+  .pf-note { margin: 12px 0 0; font-size: 13px; color: var(--muted); } .pf-note a { color: #ff9a3d; font-weight: 600; text-decoration: none; }
 
   .pf-body { display: grid; grid-template-columns: 260px 1fr; gap: 0; }
   .pf-alloc { padding: 26px 28px; border-right: 1px solid var(--card-line); display: flex; flex-direction: column; align-items: center; gap: 16px; }
@@ -296,7 +297,7 @@
 <div class="wrap">
   <header class="phero">
     <p class="eyebrow">Portfolios</p>
-    <h1>Four portfolios.<br><em>One discipline.</em></h1>
+    <h1>Five portfolios.<br><em>One discipline.</em></h1>
     <p>Every Kestrel portfolio is run by an <em>agentic advisor</em> — an autonomous agent that builds a diversified basket of tokenized US stocks, ETFs, gold and silver to a target allocation, then holds it there. When markets move the mix out of line, your advisor rebalances it back. Automatically. Non-custodially.</p>
     <div class="stat-row">
       <div class="stat"><b data-count="4">4</b><span>Risk-laddered portfolios</span></div>
@@ -427,12 +428,13 @@
 <script>
 (function(){
   var $=function(id){ return document.getElementById(id); };
-  var NAME={SGOV:"Treasuries",GLD:"Gold",SILV:"Silver",SPY:"S&P 500 ETF",QQQ:"Nasdaq-100 ETF",SCHD:"Dividend ETF","BRK.B":"Berkshire",AAPL:"Apple",MSFT:"Microsoft",JPM:"JPMorgan",AMZN:"Amazon",NVDA:"Nvidia",META:"Meta",HOOD:"Robinhood",PLTR:"Palantir",TSLA:"Tesla",MU:"Micron",SPCX:"SpaceX",MSTR:"Strategy",COIN:"Coinbase"};
+  var NAME={SGOV:"Treasuries",GLD:"Gold",SILV:"Silver",SPY:"S&P 500 ETF",QQQ:"Nasdaq-100 ETF",SCHD:"Dividend ETF","BRK.B":"Berkshire",AAPL:"Apple",MSFT:"Microsoft",JPM:"JPMorgan",AMZN:"Amazon",NVDA:"Nvidia",META:"Meta",HOOD:"Robinhood",PLTR:"Palantir",TSLA:"Tesla",MU:"Micron",SPCX:"SpaceX",MSTR:"Strategy",COIN:"Coinbase",ANSEM:"The Black Bull",KESTREL:"Kestrel",FARTCOIN:"Fartcoin",fone:"fone",PINK:"PINK"};
   var BRAND={ SGOV:['#6b7787','T'], GLD:['#b8901e','Au'], SILV:['#8f9aa8','Ag'], SPY:['#2f6fed','S'], QQQ:['#5a3fd6','Q'],
     SCHD:['#0f9e8e','D'], AAPL:['#4b4f56','A'], MSFT:['#2f8f3e','MS'], 'BRK.B':['#1b3a6b','B'],
     JPM:['#005eb8','J'], AMZN:['#e8830c','a'], NVDA:['#5c8a00','N'], META:['#0866ff','∞'],
     HOOD:['#00b34a','H'], PLTR:['#14161a','P'], TSLA:['#e82127','T'], MU:['#0a4d8c','MU'],
-    SPCX:['#14161a','X'], MSTR:['#f7931a','₿'], COIN:['#0052ff','C'] };
+    SPCX:['#14161a','X'], MSTR:['#f7931a','₿'], COIN:['#0052ff','C'],
+    ANSEM:['#c2410c','AB'], KESTREL:['#0e9f6e','K'], FARTCOIN:['#6d28d9','F'], fone:['#0ea5e9','f'], PINK:['#ec4899','P'] };
   var DOMAIN={ SGOV:'ishares.com', GLD:'spdrgoldshares.com', SILV:'dominion.market', SPY:'ssga.com', QQQ:'invesco.com',
     SCHD:'schwab.com', AAPL:'apple.com', MSFT:'microsoft.com', 'BRK.B':'berkshirehathaway.com',
     JPM:'jpmorganchase.com', AMZN:'amazon.com', NVDA:'nvidia.com', META:'meta.com',
@@ -447,17 +449,21 @@
     {k:"Soar", tier:"Growth", tc:"r3", thesis:"Growth-focused — leading tech and growth names, a gold hedge, a sliver of cash.",
      holds:[["QQQ",20],["MSFT",13],["AMZN",12],["NVDA",20],["META",10],["HOOD",10],["GLD",5],["SGOV",10]]},
     {k:"Apex", tier:"Aggressive", tc:"r4", thesis:"Swing big — high-growth and speculative names, fully invested with a gold &amp; silver hedge.",
-     holds:[["NVDA",18],["HOOD",12],["PLTR",10],["TSLA",9],["MU",7],["SPCX",16],["MSTR",10],["COIN",8],["GLD",5],["SILV",5]]}
+     holds:[["NVDA",18],["HOOD",12],["PLTR",10],["TSLA",9],["MU",7],["SPCX",16],["MSTR",10],["COIN",8],["GLD",5],["SILV",5]]},
+    {k:"Edge", tier:"Memecoins", tc:"r5", thesis:"The aggressive wing — a five-name Solana memecoin basket. Equal-weight entries, drift-band rebalanced around the clock, hard risk rails.",
+     holds:[["ANSEM",20],["KESTREL",20],["FARTCOIN",20],["fone",20],["PINK",20]],
+     note:'Names rotate on liquidity and momentum; new entries land six hours after their pool opens. Fully invested, no leverage, basket-level drawdown trigger to USDC. <a href="edge.html">See Edge live &rarr;</a>'}
   ];
   function bg(c){ return "linear-gradient(150deg,color-mix(in srgb,"+c+" 78%,#fff),"+c+")"; }
-  function bucket(k){ return k==="SGOV"?"cash":((k==="GLD"||k==="SILV")?"gold":"stock"); }
+  var MEME={ANSEM:1,KESTREL:1,FARTCOIN:1,fone:1,PINK:1};
+  function bucket(k){ return k==="SGOV"?"cash":((k==="GLD"||k==="SILV")?"gold":(MEME[k]?"meme":"stock")); }
 
   // curated, legible slice palette — bright + distinct, reads clearly on dark AND light; stocks cycle these, gold/cash keep semantic colors
   var STOCK_PAL=["#38bdf8","#34d399","#a78bfa","#f472b6","#22d3ee","#a3e635","#fb923c","#f87171","#818cf8"];
   // ---- render portfolio cards ----
   $("plist").innerHTML = PORT.map(function(p, idx){
-    var stock=0,gold=0,cash=0;
-    p.holds.forEach(function(h){ var b=bucket(h[0]); if(b==="cash")cash+=h[1]; else if(b==="gold")gold+=h[1]; else stock+=h[1]; });
+    var stock=0,gold=0,cash=0,meme=0;
+    p.holds.forEach(function(h){ var b=bucket(h[0]); if(b==="cash")cash+=h[1]; else if(b==="gold")gold+=h[1]; else if(b==="meme")meme+=h[1]; else stock+=h[1]; });
     // one clean color per holding — shared by the donut slice AND the holdings-table bar (so the table is the legend)
     var si=0, colorOf={};
     p.holds.forEach(function(h){ var k=h[0], b=bucket(k); colorOf[k]= b==="cash" ? "#9fb0a6" : (b==="gold" ? (k==="SILV" ? "#b9c4d0" : "#e0b736") : STOCK_PAL[si++ % STOCK_PAL.length]); });
@@ -476,6 +482,7 @@
     }).join("");
     var split=''
       +(stock?'<div class="sr"><span>Stocks</span><b>'+stock+'%</b></div>':'')
+      +(meme?'<div class="sr"><span>Memecoins</span><b>'+meme+'%</b></div>':'')
       +(gold?'<div class="sr"><span>Gold &amp; Silver</span><b>'+gold+'%</b></div>':'')
       +(cash?'<div class="sr"><span>Cash &amp; Treasuries</span><b>'+cash+'%</b></div>':'');
     return '<section class="pf" id="pf-'+p.k.toLowerCase()+'">'
@@ -483,9 +490,9 @@
         +'<div class="pf-title"><h3>'+p.k+'</h3><p>'+p.thesis+'</p></div>'
         +'<span class="pf-tag '+p.tc+'">'+p.tier+'</span></div>'
       +'<div class="pf-body">'
-        +'<div class="pf-alloc"><div class="donut" style="background:'+conic+'"><div class="donut-c"><b>'+(stock+gold)+'%</b><span>Invested</span></div></div>'
+        +'<div class="pf-alloc"><div class="donut" style="background:'+conic+'"><div class="donut-c"><b>'+(stock+gold+meme)+'%</b><span>Invested</span></div></div>'
           +'<div class="split">'+split+'</div></div>'
-        +'<div class="pf-holds"><div class="hh"><span>'+p.holds.length+' holdings</span><span>Target</span></div>'+rows+'</div>'
+        +'<div class="pf-holds"><div class="hh"><span>'+p.holds.length+' holdings</span><span>Target</span></div>'+rows+(p.note?'<p class="pf-note">'+p.note+'</p>':'')+'</div>'
       +'</div></section>';
   }).join("");
   // logos fall back to the branded tile when they can't load (offline / CSP sandbox)
