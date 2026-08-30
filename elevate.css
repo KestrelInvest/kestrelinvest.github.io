@@ -1,0 +1,129 @@
+/* ============================================================
+   Kestrel — Elevation layer (site-wide)
+   Premium type · aurora + grain depth · motion system ·
+   glass surfaces · universe ticker. Loaded AFTER each page's
+   inline <style> so it refines without a rewrite.
+   Progressive-enhancement: motion gated on html.kx-js.
+   ============================================================ */
+
+/* ---------- Type ---------- */
+:root{
+  --font-display:"Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-body:"Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --ease-out:cubic-bezier(.22,.72,.2,1);
+}
+body{ font-family:var(--font-body); letter-spacing:-.006em; }
+h1,h2,h3,.brand b,.sec-head h2,.hero h1{ font-family:var(--font-display); letter-spacing:-.02em; }
+h1,.hero h1{ letter-spacing:-.032em; }
+.eyebrow,.stocks-h .l,.sellab{ font-family:var(--font-mono); }
+.mono,.kx-mono{ font-family:var(--font-mono); }
+
+/* ---------- Depth: aurora + grain (added by JS) ---------- */
+.kx-aurora{ position:fixed; inset:-20vmax; z-index:-2; pointer-events:none; overflow:hidden;
+  filter:blur(30px) saturate(122%); opacity:.9; contain:strict; }
+.kx-aurora b{ position:absolute; display:block; border-radius:50%; mix-blend-mode:screen; opacity:.5;
+  background:radial-gradient(circle at 50% 50%, var(--accent), transparent 62%); }
+.kx-aurora b.a{ width:52vmax; height:52vmax; left:-6vmax; top:-14vmax;
+  background:radial-gradient(circle at 50% 50%, color-mix(in srgb,var(--accent) 90%, #7cf), transparent 60%); animation:kxDrift1 26s var(--ease-out) infinite alternate; }
+.kx-aurora b.b{ width:44vmax; height:44vmax; right:-8vmax; top:-6vmax;
+  background:radial-gradient(circle at 50% 50%, color-mix(in srgb,var(--accent) 70%, #2bd), transparent 60%); animation:kxDrift2 32s var(--ease-out) infinite alternate; }
+.kx-aurora b.c{ width:40vmax; height:40vmax; left:34%; top:24vmax;
+  background:radial-gradient(circle at 50% 50%, color-mix(in srgb,var(--gold,#cba52e) 60%, var(--accent)), transparent 62%); opacity:.32; animation:kxDrift3 38s var(--ease-out) infinite alternate; }
+:root[data-theme="light"] .kx-aurora{ opacity:.5; }
+@keyframes kxDrift1{ to{ transform:translate3d(10vmax,7vmax,0) scale(1.14); } }
+@keyframes kxDrift2{ to{ transform:translate3d(-9vmax,6vmax,0) scale(1.1); } }
+@keyframes kxDrift3{ to{ transform:translate3d(6vmax,-8vmax,0) scale(1.18); } }
+.kx-grain{ position:fixed; inset:0; z-index:2000; pointer-events:none; opacity:.5; mix-blend-mode:soft-light;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E"); }
+:root[data-theme="light"] .kx-grain{ opacity:.32; }
+
+/* ---------- Scroll progress ---------- */
+.kx-progress{ position:fixed; top:0; left:0; height:2px; width:0; z-index:1200; pointer-events:none;
+  background:linear-gradient(90deg, color-mix(in srgb,var(--accent) 60%,transparent), var(--accent) 60%, var(--accent-ink));
+  box-shadow:0 0 12px var(--glow); transition:width .12s linear; }
+
+/* ---------- Nav: condense on scroll ---------- */
+nav{ transition:background .3s ease, box-shadow .3s ease, border-color .3s ease; }
+nav.kx-scrolled{ background:color-mix(in srgb, var(--bg) 62%, transparent); backdrop-filter:blur(16px) saturate(140%);
+  -webkit-backdrop-filter:blur(16px) saturate(140%); box-shadow:0 12px 34px -26px rgba(0,0,0,.8); }
+.nav-links a{ position:relative; transition:color .18s ease; }
+.nav-links a:not(.btn)::after{ content:""; position:absolute; left:0; right:100%; bottom:-6px; height:1.5px; border-radius:2px;
+  background:linear-gradient(90deg,var(--accent),var(--accent-ink)); transition:right .28s var(--ease-out); }
+.nav-links a:not(.btn):hover::after{ right:0; }
+
+/* ---------- Universe ticker (added by JS under nav) ---------- */
+.kx-ticker{ position:relative; z-index:19; overflow:hidden; border-bottom:1px solid var(--line);
+  background:color-mix(in srgb, var(--surface) 70%, transparent); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); }
+.kx-ticker::after{ content:""; position:absolute; right:0; top:0; bottom:0; width:60px; z-index:2; pointer-events:none;
+  background:linear-gradient(270deg, var(--bg), transparent); }
+.kx-ticker .lbl{ position:absolute; left:0; top:0; bottom:0; z-index:3; display:flex; align-items:center; gap:7px;
+  padding:0 14px 0 max(18px,env(safe-area-inset-left)); font-family:var(--font-mono); font-size:9.5px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--accent-ink); background:var(--surface); white-space:nowrap; }
+.kx-ticker .lbl::after{ content:""; position:absolute; left:100%; top:0; bottom:0; width:40px;
+  background:linear-gradient(90deg, var(--surface), transparent); }
+.kx-ticker .lbl i{ width:6px; height:6px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 3px var(--glow); }
+.kx-track{ display:flex; gap:0; width:max-content; padding:8px 0; animation:kxScroll 46s linear infinite; will-change:transform; }
+.kx-ticker:hover .kx-track{ animation-play-state:paused; }
+.kx-track .it{ display:inline-flex; align-items:center; gap:8px; padding:0 20px; border-right:1px solid var(--line); white-space:nowrap; }
+.kx-track .it .d{ width:7px; height:7px; border-radius:2px; flex:none; }
+.kx-track .it .sym{ font-family:var(--font-mono); font-size:11.5px; font-weight:600; color:var(--ink); letter-spacing:.02em; }
+.kx-track .it .nm{ font-size:10.5px; color:var(--muted); }
+@keyframes kxScroll{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+
+/* ---------- Reveal motion (gated on JS) ---------- */
+html.kx-js [data-reveal]{ opacity:0; transform:translateY(20px); will-change:opacity,transform; }
+html.kx-js [data-reveal].kx-in{ opacity:1; transform:none;
+  transition:opacity .72s var(--ease-out), transform .72s var(--ease-out); }
+
+/* ---------- Glass surfaces: gradient hairline + top highlight ---------- */
+.panel,.pcard,.hero-img{ position:relative; }
+.panel::after,.hero-img::after{ content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+  padding:1px; background:linear-gradient(160deg, color-mix(in srgb,var(--accent) 42%, transparent), transparent 42%, transparent 88%, color-mix(in srgb,var(--accent) 16%, transparent));
+  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor; mask-composite:exclude; }
+.panel{ box-shadow:0 1px 0 rgba(255,255,255,.04) inset, 0 40px 90px -50px rgba(0,0,0,.9), 0 30px 70px -46px var(--glow); }
+
+/* ---------- Cursor spotlight (panels/cards) ---------- */
+[data-spot]{ position:relative; }
+[data-spot]::before{ content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none; z-index:0;
+  opacity:0; transition:opacity .3s ease;
+  background:radial-gradient(320px circle at var(--mx,50%) var(--my,50%), var(--glow), transparent 60%); }
+[data-spot]:hover::before{ opacity:1; }
+[data-spot] > *{ position:relative; z-index:1; }
+.hero-img > .img-tag{ position:absolute; z-index:2; }
+
+/* ---------- Button sheen sweep ---------- */
+.btn.solid{ position:relative; overflow:hidden; }
+.btn.solid::after{ content:""; position:absolute; top:0; left:-140%; width:60%; height:100%; z-index:0; transform:skewX(-18deg);
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,.5), transparent); transition:left .6s var(--ease-out); }
+.btn.solid:hover::after{ left:150%; }
+.btn.solid > *{ position:relative; z-index:1; }
+
+/* ---------- Feature cards lift + gradient hairline + icon tile ---------- */
+.feat,.pcard,.srow{ transition:transform .2s var(--ease-out), box-shadow .2s var(--ease-out), border-color .2s ease; }
+.feat{ background:linear-gradient(180deg, color-mix(in srgb,var(--surface) 92%, var(--accent) 3%), var(--surface)); box-shadow:0 30px 60px -48px rgba(0,0,0,.9); }
+.feat::after{ content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none; z-index:1;
+  padding:1px; background:linear-gradient(150deg, color-mix(in srgb,var(--accent) 40%, transparent), transparent 44%, transparent 90%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor; mask-composite:exclude; }
+.feat:hover{ transform:translateY(-4px); box-shadow:0 24px 50px -30px var(--glow), 0 40px 70px -50px rgba(0,0,0,.9); }
+.feat .fi{ width:44px !important; height:44px !important; border-radius:13px !important;
+  background:linear-gradient(155deg, color-mix(in srgb,var(--accent) 28%, var(--surface)), color-mix(in srgb,var(--accent) 8%, var(--surface))) !important;
+  color:var(--accent-ink) !important; box-shadow:inset 0 1px 0 rgba(255,255,255,.12), 0 8px 20px -12px var(--glow); }
+.feat .fi svg{ width:20px; height:20px; }
+
+/* ---------- CTA band: aurora + gradient border ---------- */
+.ea-band-in{ background:linear-gradient(180deg, color-mix(in srgb,var(--surface) 88%, var(--accent) 4%), var(--surface)) !important; }
+.ea-band-in::after{ content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none; z-index:0;
+  padding:1px; background:linear-gradient(150deg, color-mix(in srgb,var(--accent) 55%, transparent), transparent 40%, transparent 82%, color-mix(in srgb,var(--accent) 22%, transparent));
+  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor; mask-composite:exclude; }
+.ea-band-in::before{ content:""; position:absolute; left:50%; top:-40%; width:70%; height:150%; transform:translateX(-50%); z-index:0; pointer-events:none;
+  background:radial-gradient(closest-side, var(--glow), transparent 70%); opacity:.9; }
+.ea-band-in > *{ position:relative; z-index:1; }
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce){
+  .kx-aurora b{ animation:none !important; }
+  .kx-track{ animation:none !important; }
+  html.kx-js [data-reveal]{ opacity:1 !important; transform:none !important; }
+  .btn.solid::after{ transition:none; }
+}

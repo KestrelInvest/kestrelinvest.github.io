@@ -1,0 +1,642 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Portfolios — Kestrel</title>
+<meta name="description" content="Four risk-laddered Kestrel portfolios of tokenized US stocks, ETFs, gold and silver — full holdings, target allocations, and how the agentic advisor rebalances back to target.">
+<link rel="canonical" href="https://kestrelinvest.xyz/portfolios.html">
+<meta name="theme-color" content="#0e9f6e" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#04140d" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kestrel">
+<meta property="og:title" content="Portfolios — Kestrel">
+<meta property="og:description" content="Four risk-laddered Kestrel portfolios of tokenized US stocks, ETFs, gold and silver — full holdings, target allocations, and how the agentic advisor rebalances back to target.">
+<meta property="og:url" content="https://kestrelinvest.xyz/portfolios.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Portfolios — Kestrel">
+<meta name="twitter:description" content="Four risk-laddered Kestrel portfolios of tokenized US stocks, ETFs, gold and silver — full holdings, target allocations, and how the agentic advisor rebalances back to target.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230e9f6e'/%3E%3Cg fill='%23eafff4'%3E%3Cpath d='M47 52 C 37 40 27 31 13 26 C 20 40 30 51 43 57 Z'/%3E%3Cpath d='M45 55 C 42 49 43 42 49 38 C 47 35 46 31 49 28 C 52 31 53 35 52 39 C 58 43 60 51 56 60 L 68 82 L 57 73 L 54 88 L 50 71 C 47 66 46 61 45 55 Z'/%3E%3Cpath d='M51 40 C 63 27 76 19 93 15 C 80 28 67 40 55 47 Z'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root {
+    --bg:#f5f8f6; --surface:#ffffff; --surface-2:#f0f5f1;
+    --ink:#0e211a; --muted:#5a6f64; --line:rgba(14,33,26,.10); --card-line:rgba(14,33,26,.09);
+    --accent:#0e9f6e; --accent-ink:#0a7d56; --glow:rgba(14,159,110,.14); --market:#d2604f;
+    --cash:#9fb0a6; --gold:#cba52e;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#070c0a; --surface:#0f1713; --surface-2:#131d17; --ink:#e9f2ec; --muted:#83988c;
+      --line:rgba(255,255,255,.08); --card-line:rgba(255,255,255,.07);
+      --accent:#2ee6a0; --accent-ink:#68f0bd; --glow:rgba(46,230,160,.16); --market:#f2836e; }
+  }
+  :root[data-theme="light"] { --bg:#f5f8f6; --surface:#ffffff; --surface-2:#f0f5f1; --ink:#0e211a; --muted:#5a6f64; --line:rgba(14,33,26,.10); --card-line:rgba(14,33,26,.09); --accent:#0e9f6e; --accent-ink:#0a7d56; --glow:rgba(14,159,110,.14); --market:#d2604f; }
+  :root[data-theme="dark"] { --bg:#070c0a; --surface:#0f1713; --surface-2:#131d17; --ink:#e9f2ec; --muted:#83988c; --line:rgba(255,255,255,.08); --card-line:rgba(255,255,255,.07); --accent:#2ee6a0; --accent-ink:#68f0bd; --glow:rgba(46,230,160,.16); --market:#f2836e; }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; color: var(--ink); position: relative;
+    font: 15.5px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased;
+    background: radial-gradient(120% 55% at 50% -12%, var(--glow), transparent 52%), var(--bg); }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 30px; }
+  a { color: inherit; }
+
+  /* nav */
+  nav { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(12px);
+    background: color-mix(in srgb, var(--bg) 78%, transparent); border-bottom: 1px solid var(--line); }
+  .nav-in { max-width: 1180px; margin: 0 auto; padding: 14px 30px; display: flex; align-items: center; gap: 14px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; }
+  .brand .logo { width: 26px; height: 26px; color: var(--accent); }
+  .brand b { font-size: 16px; letter-spacing: 3px; font-weight: 650; }
+  .brand .tm { font-size: 8px; font-weight: 600; letter-spacing: 0; vertical-align: super; margin-left: -1px; color: var(--muted); }
+  .nav-links { margin-left: auto; display: flex; align-items: center; gap: 22px; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; font-family: inherit; }
+  .nav-links a:hover, .nav-links a.on { color: var(--ink); }
+  .nav-toggle { display: none; margin-left: auto; width: 40px; height: 40px; border: 1px solid var(--card-line); border-radius: 10px; background: var(--surface); cursor: pointer; padding: 0; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
+  .nav-toggle span { display: block; width: 18px; height: 2px; border-radius: 2px; background: var(--ink); transition: transform .2s ease, opacity .2s ease; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .btn { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--accent); color: var(--accent-ink); background: transparent; padding: 9px 17px; border-radius: 10px; font-size: 14px; font-weight: 600; font-family: inherit; text-decoration: none; cursor: pointer; transition: all .16s ease; }
+  .btn:hover { background: var(--accent); color: #04140d; box-shadow: 0 8px 24px var(--glow); }
+  .btn.solid { background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 90%, #fff), var(--accent)); color: #04140d; border-color: transparent; font-weight: 650; letter-spacing: -.004em; box-shadow: 0 1px 1px rgba(0,0,0,.10), 0 8px 20px -10px var(--glow); }
+  .btn.solid:hover { transform: translateY(-1px); background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 96%, #fff), var(--accent)); box-shadow: 0 2px 4px rgba(0,0,0,.12), 0 14px 30px -10px var(--glow); }
+  .btn.solid:active { transform: translateY(0); box-shadow: 0 1px 1px rgba(0,0,0,.10), 0 6px 16px -10px var(--glow); }
+  .btn:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 2px; }
+
+  /* hero */
+  .phero { padding: 62px 0 34px; max-width: 760px; }
+  .eyebrow { font-family: ui-monospace, monospace; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--accent-ink); margin: 0 0 16px; }
+  .phero h1 { margin: 0; font-size: clamp(34px, 5vw, 56px); line-height: 1.03; font-weight: 800; letter-spacing: -.035em; }
+  .phero h1 em { font-style: normal; color: var(--accent); }
+  .phero p { margin: 20px 0 0; font-size: 18px; color: var(--muted); max-width: 60ch; }
+  .phero p em { font-style: normal; color: var(--accent-ink); font-weight: 650; }
+  .stat-row { display: flex; flex-wrap: wrap; gap: 30px; margin-top: 30px; }
+  .stat b { display: block; font-size: 24px; font-weight: 750; letter-spacing: -.02em; }
+  .stat span { font-size: 13px; color: var(--muted); }
+
+  /* rebalance demonstration */
+  .reb { margin: 22px 0 10px; border: 1px solid var(--card-line); border-radius: 22px; overflow: hidden;
+    background: radial-gradient(130% 130% at 50% -20%, var(--glow), transparent 55%), var(--surface); box-shadow: 0 40px 80px -54px var(--glow); }
+  .reb-in { padding: 34px 36px 30px; }
+  .reb h2 { margin: 12px 0 6px; font-size: clamp(24px, 3vw, 32px); font-weight: 750; letter-spacing: -.02em; }
+  .reb .sub { margin: 0 0 24px; color: var(--muted); font-size: 16px; max-width: 60ch; }
+  .reb-stage { display: grid; grid-template-columns: 1fr; gap: 18px; }
+  .reb-steps { display: flex; gap: 8px; margin-bottom: 4px; }
+  .reb-step { flex: 1; padding: 12px 14px; border: 1px solid var(--card-line); border-radius: 12px; background: var(--surface); transition: border-color .3s ease, background .3s ease; }
+  .reb-step.on { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 6%, var(--surface)); box-shadow: 0 0 0 1px var(--glow); }
+  .reb-step .n { font-family: ui-monospace, monospace; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .reb-step .t { font-weight: 650; font-size: 14px; margin-top: 3px; }
+  .reb-step.on .t { color: var(--accent-ink); }
+  .abar { display: flex; height: 46px; border-radius: 12px; overflow: hidden; background: var(--line); border: 1px solid var(--card-line); }
+  .abar > span { display: flex; align-items: center; justify-content: center; height: 100%; box-shadow: inset -1px 0 0 var(--surface);
+    transition: width .9s cubic-bezier(.4,0,.2,1); font-family: ui-monospace, monospace; font-size: 11px; font-weight: 650; color: #04140d; overflow: hidden; white-space: nowrap; }
+  .reb-cap { min-height: 22px; font-size: 14px; color: var(--ink); }
+  .reb-cap b { color: var(--accent-ink); }
+  .reb-legend { display: flex; flex-wrap: wrap; gap: 10px 18px; font-size: 12.5px; color: var(--muted); }
+  .reb-legend span { display: inline-flex; align-items: center; gap: 7px; }
+  .reb-legend i { width: 12px; height: 12px; border-radius: 3px; }
+
+  /* portfolio sections */
+  .plist { display: flex; flex-direction: column; gap: 22px; margin-top: 10px; }
+  .sec-lead { max-width: 640px; margin: 46px 0 4px; }
+  .sec-lead h2 { margin: 10px 0 8px; font-size: clamp(26px, 3.4vw, 38px); font-weight: 750; letter-spacing: -.02em; }
+  .sec-lead p { margin: 0; color: var(--muted); font-size: 16.5px; }
+
+  .pf { border: 1px solid var(--card-line); border-radius: 22px; background: var(--surface); overflow: hidden; box-shadow: 0 30px 70px -54px var(--glow); }
+  .pf-top { display: flex; align-items: flex-start; gap: 16px; padding: 26px 28px 20px; border-bottom: 1px solid var(--card-line); }
+  .pf-rank { font-family: ui-monospace, monospace; font-size: 12px; color: var(--muted); font-weight: 650; padding-top: 6px; }
+  .pf-title { flex: 1; min-width: 0; }
+  .pf-title h3 { margin: 0; font-size: 26px; font-weight: 800; letter-spacing: -.02em; }
+  .pf-title p { margin: 5px 0 0; color: var(--muted); font-size: 14.5px; }
+  .pf-tag { flex: none; font-family: ui-monospace, monospace; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; font-weight: 650; padding: 6px 11px; border-radius: 8px; }
+  .r1 { color:#04140d; background: var(--cash); } .r2 { color:#0e2b12; background: #a3cc3a; }
+  .r3 { color:#3a1c04; background: #e6b93e; } .r4 { color:#fff; background: #d2452f; }
+
+  .pf-body { display: grid; grid-template-columns: 260px 1fr; gap: 0; }
+  .pf-alloc { padding: 26px 28px; border-right: 1px solid var(--card-line); display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  .donut { position: relative; width: 168px; height: 168px; border-radius: 50%;
+    -webkit-mask: radial-gradient(circle, transparent 52%, #000 53%); mask: radial-gradient(circle, transparent 52%, #000 53%); }
+  .donut-c { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+  .donut-c b { font-size: 22px; font-weight: 800; letter-spacing: -.02em; }
+  .donut-c span { font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-family: ui-monospace, monospace; }
+  .split { display: flex; flex-direction: column; gap: 8px; width: 100%; font-family: ui-monospace, monospace; font-size: 12px; }
+  .split .sr { display: flex; align-items: center; gap: 8px; color: var(--muted); }
+  .split .sr i { width: 10px; height: 10px; border-radius: 3px; flex: none; }
+  .split .sr b { color: var(--ink); margin-left: auto; font-variant-numeric: tabular-nums; }
+
+  .pf-holds { padding: 20px 24px 24px; }
+  .pf-holds .hh { font-family: ui-monospace, monospace; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); padding: 0 4px 8px; display: flex; }
+  .pf-holds .hh span:last-child { margin-left: auto; }
+  .hrow { display: flex; align-items: center; gap: 12px; padding: 8px 4px; border-top: 1px solid var(--card-line); }
+  .hlogo { width: 32px; height: 32px; border-radius: 8px; flex: none; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #fff; color: #fff; font-family: ui-monospace, monospace; font-weight: 700; font-size: 11px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.12); }
+  .hlogo img { width: 100%; height: 100%; object-fit: contain; padding: 5px; display: block; }
+  .hlogo.fallback { background: linear-gradient(150deg, color-mix(in srgb, var(--bc) 78%, #fff), var(--bc)); box-shadow: inset 0 1px 0 rgba(255,255,255,.28), inset 0 0 0 1px rgba(0,0,0,.10), 0 1px 2px rgba(0,0,0,.18); }
+  .hlogo.fallback::after { content: attr(data-m); }
+  .hrow .hnm { display: flex; flex-direction: column; gap: 0; min-width: 0; width: 128px; }
+  .hrow .hnm b { font-family: ui-monospace, monospace; font-size: 12.5px; font-weight: 650; }
+  .hrow .hnm span { font-size: 11px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .hrow .hbar { flex: 1; min-width: 40px; height: 7px; border-radius: 4px; background: var(--line); overflow: hidden; }
+  .hrow .hbar i { display: block; height: 100%; border-radius: 4px; }
+  .hrow .hw { font-family: ui-monospace, monospace; font-size: 12.5px; font-weight: 650; color: var(--ink); width: 42px; text-align: right; font-variant-numeric: tabular-nums; }
+
+  /* methodology */
+  .method { margin: 46px 0 6px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .mcard { border: 1px solid var(--card-line); border-radius: 16px; background: var(--surface); padding: 22px; }
+  .mcard .mi { width: 34px; height: 34px; border-radius: 10px; background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent-ink); display: inline-flex; align-items: center; justify-content: center; }
+  .mcard h4 { margin: 14px 0 6px; font-size: 17px; font-weight: 750; letter-spacing: -.01em; }
+  .mcard p { margin: 0; color: var(--muted); font-size: 14px; }
+
+  /* eyebrow chip + band + modal (shared with main site) */
+  .ea-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-ink); }
+  .ea-eyebrow i { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--glow); }
+  .ea-band { margin: 48px 0 8px; }
+  .ea-band-in { position: relative; overflow: hidden; border: 1px solid var(--card-line); border-radius: 22px; padding: 44px 40px; text-align: center;
+    background: radial-gradient(120% 140% at 50% -30%, var(--glow), transparent 60%), var(--surface); box-shadow: 0 40px 80px -50px var(--glow); }
+  .ea-band h2 { margin: 16px 0 10px; font-size: clamp(26px, 3.4vw, 38px); font-weight: 750; letter-spacing: -.02em; }
+  .ea-band p { margin: 0 auto 22px; max-width: 52ch; color: var(--muted); font-size: 16px; }
+  .ea-overlay { position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center; padding: 20px;
+    background: color-mix(in srgb, #04140d 55%, transparent); backdrop-filter: blur(6px); animation: eaFade .2s ease; }
+  .ea-overlay[hidden] { display: none; }
+  @keyframes eaFade { from { opacity: 0; } to { opacity: 1; } }
+  .ea-modal { position: relative; width: 100%; max-width: 440px; background: var(--surface); border: 1px solid var(--card-line);
+    border-radius: 20px; padding: 32px 30px 28px; box-shadow: 0 50px 100px -30px rgba(0,0,0,.5); animation: eaRise .25s cubic-bezier(.2,.7,.2,1); max-height: calc(100dvh - 40px); overflow-y: auto; }
+  @keyframes eaRise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  .ea-close { position: absolute; top: 14px; right: 14px; width: 32px; height: 32px; border: none; border-radius: 9px; background: var(--surface-2); color: var(--muted); font-size: 13px; cursor: pointer; transition: color .15s ease, background .15s ease; }
+  .ea-close:hover { color: var(--ink); background: color-mix(in srgb, var(--accent) 12%, var(--surface-2)); }
+  .ea-modal h2 { margin: 14px 0 8px; font-size: 23px; font-weight: 750; letter-spacing: -.02em; }
+  .ea-sub { margin: 0 0 20px; color: var(--muted); font-size: 14px; line-height: 1.5; }
+  .ea-field { display: block; margin-bottom: 14px; }
+  .ea-lab { display: block; font-size: 12.5px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+  .ea-field input { width: 100%; padding: 12px 13px; border: 1px solid var(--card-line); border-radius: 11px; background: var(--bg); color: var(--ink); font: inherit; font-size: 15px; transition: border-color .15s ease, box-shadow .15s ease; }
+  #eaWallet { font-family: ui-monospace, monospace; font-size: 13.5px; }
+  .ea-field input::placeholder { color: color-mix(in srgb, var(--muted) 70%, transparent); }
+  .ea-field input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--glow); }
+  .ea-field.bad input { border-color: var(--market); }
+  .ea-err { display: block; min-height: 15px; margin-top: 5px; font-size: 12px; color: var(--market); }
+  .ea-submit { width: 100%; justify-content: center; padding: 13px; margin-top: 4px; font-size: 15px; }
+  .ea-submit[disabled] { opacity: .6; cursor: default; }
+  .ea-trust { display: flex; align-items: flex-start; gap: 8px; margin: 16px 0 0; font-size: 11.5px; line-height: 1.5; color: var(--muted); }
+  .ea-trust svg { flex: none; margin-top: 1px; color: var(--accent-ink); }
+  .ea-done { text-align: center; }
+  .ea-check { width: 58px; height: 58px; margin: 4px auto 4px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #04140d; background: var(--accent); box-shadow: 0 0 0 8px var(--glow); }
+  .ea-done .btn { margin-top: 18px; }
+  body.ea-lock { overflow: hidden; }
+
+  footer { margin-top: 46px; border-top: 1px solid var(--line); padding: 28px 0 52px; display: flex; flex-direction: column; gap: 20px; }
+  footer .cap { color: var(--muted); font-size: 11.5px; max-width: 56ch; }
+  .foot-links { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
+  .foot-links a { color: var(--muted); text-decoration: none; font-size: 14px; }
+  .foot-links a:hover { color: var(--ink); }
+  .foot-contact { margin-left: auto; display: inline-flex; align-items: center; gap: 12px; }
+  .foot-contact .btn { padding: 8px 15px; }
+  .foot-x { display: inline-flex; width: 34px; height: 34px; align-items: center; justify-content: center; border: 1px solid var(--card-line); border-radius: 9px; color: var(--ink); transition: border-color .15s ease, background .15s ease; }
+  .foot-x:hover { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
+  .foot-x svg { width: 15px; height: 15px; }
+  .foot-bottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: center; }
+  .foot-meta { display: inline-flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .foot-dom { font-family: ui-monospace, monospace; font-size: 12px; letter-spacing: .04em; color: var(--accent-ink); text-decoration: none; font-weight: 600; }
+  .bpbadge { display: inline-flex; align-items: center; gap: 7px; font-family: ui-monospace, monospace; font-size: 11.5px; letter-spacing: .04em; color: var(--muted); }
+  .bpbadge .bp { width: 15px; height: 15px; color: var(--accent-ink); flex: none; }
+
+  @media (max-width: 860px) {
+    .pf-body { grid-template-columns: 1fr; }
+    .pf-alloc { border-right: none; border-bottom: 1px solid var(--card-line); flex-direction: row; align-items: center; gap: 22px; }
+    .pf-alloc .split { max-width: 220px; }
+    .method { grid-template-columns: 1fr; }
+    .reb-steps { flex-direction: column; }
+  }
+  @media (max-width: 680px) {
+    .wrap { padding: 0 18px; }
+    .nav-in { padding: 12px 18px; gap: 10px; position: relative; }
+    .nav-toggle { display: flex; }
+    .nav-links { position: absolute; top: calc(100% + 1px); left: 0; right: 0; margin: 0; flex-direction: column; align-items: stretch; gap: 0; background: var(--surface); border-bottom: 1px solid var(--line); box-shadow: 0 20px 40px -24px var(--glow); padding: 8px 18px 16px; display: none; }
+    .nav-links.open { display: flex; }
+    .nav-links a { padding: 13px 4px; font-size: 15px; border-bottom: 1px solid var(--card-line); }
+    .nav-links .btn { margin-top: 12px; justify-content: center; padding: 12px; }
+    .phero { padding: 40px 0 26px; }
+    .stat-row { gap: 22px; }
+    .reb-in { padding: 26px 20px 22px; }
+    .pf-top { padding: 22px 18px 18px; flex-wrap: wrap; }
+    .pf-alloc { flex-direction: column; padding: 22px 18px; }
+    .pf-holds { padding: 16px 14px 20px; }
+    .hrow .hnm { width: 108px; }
+    .ea-band-in { padding: 30px 20px; border-radius: 18px; }
+    .ea-overlay { padding: 12px; align-items: flex-end; }
+    .ea-modal { padding: 26px 20px 22px; border-radius: 18px 18px 16px 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .abar > span { transition: none; } html { scroll-behavior: auto; } }
+
+  /* ── fit quiz ── */
+  .quiz { max-width: 860px; margin: 0 auto 26px; background: var(--surface); border: 1px solid var(--card-line); border-radius: 22px; padding: 28px clamp(18px, 4vw, 40px) 30px; }
+  .quiz .q-prog { display: flex; gap: 7px; margin-bottom: 22px; }
+  .quiz .q-prog i { height: 4px; flex: 1; border-radius: 2px; background: var(--card-line); transition: background .25s ease; }
+  .quiz .q-prog i.on { background: var(--accent); }
+  .quiz h3 { margin: 0 0 6px; font-size: clamp(19px, 2.6vw, 24px); font-weight: 700; letter-spacing: -.01em; }
+  .quiz .q-sub { margin: 0 0 18px; color: var(--muted); font-size: 14.5px; }
+  .quiz .q-opts { display: flex; flex-direction: column; gap: 10px; }
+  .quiz .q-opt { text-align: left; font: inherit; color: inherit; background: var(--surface-2, transparent); border: 1px solid var(--card-line); border-radius: 14px; padding: 14px 16px; cursor: pointer; transition: border-color .15s ease, transform .15s ease; }
+  .quiz .q-opt:hover { border-color: color-mix(in srgb, var(--accent) 55%, var(--card-line)); transform: translateY(-1px); }
+  .quiz .q-opt b { display: block; font-size: 15.5px; margin-bottom: 2px; }
+  .quiz .q-opt span { color: var(--muted); font-size: 13.5px; }
+  .quiz .q-back { margin-top: 16px; background: none; border: none; color: var(--muted); font: inherit; font-size: 13.5px; cursor: pointer; padding: 0; }
+  .quiz .q-back:hover { color: var(--ink); }
+  .q-result { display: none; text-align: center; }
+  .q-result.show { display: block; }
+  .q-result .qr-tag { display: inline-block; margin-bottom: 12px; }
+  .q-result .qr-donut { width: 132px; height: 132px; border-radius: 50%; margin: 6px auto 14px; position: relative; }
+  .q-result .qr-donut::after { content:""; position: absolute; inset: 24px; border-radius: 50%; background: var(--surface); }
+  .q-result h3 { font-size: clamp(24px, 3.4vw, 32px); }
+  .q-result .qr-split { color: var(--muted); font-size: 15px; margin: 4px 0 18px; }
+  .q-result .qr-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .q-result .qr-note { margin-top: 16px; font-size: 12px; color: var(--ink-faint, #5f7568); }
+  .q-result .q-back { margin-top: 14px; }
+
+  .edge-navlink{position:relative}
+  .edge-navdot{position:absolute;top:2px;right:-8px;width:6px;height:6px;border-radius:50%;background:#ff9a3d;display:inline-block;box-shadow:0 0 8px #ff9a3d}
+</style>
+<link rel="stylesheet" href="elevate.css">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="kxNear" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9dffdd"/><stop offset=".5" stop-color="#2ee6a0"/><stop offset="1" stop-color="#0e9f6e"/></linearGradient>
+    <linearGradient id="kxFar" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#15b884"/><stop offset="1" stop-color="#0a7047"/></linearGradient>
+    <linearGradient id="kxBod" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c7ffee"/><stop offset="1" stop-color="#12b07d"/></linearGradient>
+  </defs>
+  <symbol id="kestrel" viewBox="0 0 100 100">
+    <path fill="url(#kxFar)" d="M47 52 C 37 40 27 31 13 26 C 20 40 30 51 43 57 Z"/>
+    <path fill="url(#kxBod)" d="M45 55 C 42 49 43 42 49 38 C 47 35 46 31 49 28 C 52 31 53 35 52 39 C 58 43 60 51 56 60 L 68 82 L 57 73 L 54 88 L 50 71 C 47 66 46 61 45 55 Z"/>
+    <path fill="url(#kxNear)" d="M51 40 C 63 27 76 19 93 15 C 80 28 67 40 55 47 Z"/>
+    <path fill="#2ee6a0" opacity=".75" d="M72 25 C 80 20 86 18 92 16 C 85 23 77 29 69 34 Z"/>
+    <circle cx="50.5" cy="31" r="1.8" fill="#0a1712"/>
+  </symbol>
+  <symbol id="bp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8.5 7.2 a3.5 3.5 0 0 1 7 0"/><rect x="4.2" y="7.2" width="15.6" height="12.8" rx="4.4"/><rect x="8.4" y="12.4" width="7.2" height="7.6" rx="2"/><line x1="10.4" y1="15.4" x2="13.6" y2="15.4"/>
+  </symbol>
+</svg>
+
+<nav>
+  <div class="nav-in">
+    <a class="brand" href="index.html"><svg class="logo"><use href="#kestrel"/></svg><b>KESTREL<span class="tm">&#8482;</span></b></a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <div class="nav-links" id="navLinks">
+      <a href="portfolios.html" class="on">Portfolios</a>
+      <a href="prospectus.html">Prospectus</a>
+      <a href="edge.html" class="edge-navlink">Edge<i class="edge-navdot"></i></a>
+      <a href="vane.html">VANE</a>
+      <a href="x402.html">x402</a>
+      <a href="https://pump.fun/coin/G9ALRz5jtq6wG7dijjsb1TvkGatwPNcnhbAGECVQpump" id="tokenLink" target="_blank" rel="noopener">$Kestrel</a>
+      <button class="btn solid js-ea" type="button">Request early access</button>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <header class="phero">
+    <p class="eyebrow">Portfolios</p>
+    <h1>Four portfolios.<br><em>One discipline.</em></h1>
+    <p>Every Kestrel portfolio is run by an <em>agentic advisor</em> — an autonomous agent that builds a diversified basket of tokenized US stocks, ETFs, gold and silver to a target allocation, then holds it there. When markets move the mix out of line, your advisor rebalances it back. Automatically. Non-custodially.</p>
+    <div class="stat-row">
+      <div class="stat"><b data-count="4">4</b><span>Risk-laddered portfolios</span></div>
+      <div class="stat"><b data-count="19">19</b><span>Tokenized securities</span></div>
+      <div class="stat"><b data-count="3" data-suf="%">3%</b><span>Drift-band rebalancing</span></div>
+      <div class="stat"><b>24/7</b><span>Traded on Solana</span></div>
+    </div>
+  </header>
+
+  <!-- REBALANCE DEMONSTRATION -->
+  <section class="reb">
+    <div class="reb-in">
+      <span class="ea-eyebrow"><i></i>The core discipline</span>
+      <h2>How every portfolio stays on target</h2>
+      <p class="sub">You choose a target mix. Markets constantly push it out of shape — winners grow too large, laggards shrink. Kestrel watches the drift and, when a holding strays past its band, trims what ran ahead and tops up what fell behind — back to your target.</p>
+      <div class="reb-stage">
+        <div class="reb-steps">
+          <div class="reb-step" data-s="0"><div class="n">Step 1</div><div class="t">Your target allocation</div></div>
+          <div class="reb-step" data-s="1"><div class="n">Step 2</div><div class="t">The market moves it</div></div>
+          <div class="reb-step" data-s="2"><div class="n">Step 3</div><div class="t">Kestrel rebalances</div></div>
+        </div>
+        <div class="abar" id="rebBar"></div>
+        <div class="reb-cap" id="rebCap"></div>
+        <div class="reb-legend" id="rebLegend"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="sec-lead" id="quiz-lead">
+    <p class="eyebrow">Find your fit</p>
+    <h2>Which portfolio are you?</h2>
+    <p>Five quick questions — no wallet, no email. Answers stay on this page.</p>
+  </div>
+  <div class="quiz" id="quiz">
+    <div class="q-prog" id="qProg"></div>
+    <div id="qStep"></div>
+    <div class="q-result" id="qResult"></div>
+  </div>
+
+  <div class="sec-lead">
+    <p class="eyebrow">The line-up</p>
+    <h2>From steady to bold.</h2>
+    <p>Pick the risk level that fits you. Each portfolio holds a curated set of names at fixed target weights — shown in full below.</p>
+  </div>
+
+  <div class="plist" id="plist"></div>
+
+  <!-- METHODOLOGY -->
+  <div class="method">
+    <div class="mcard">
+      <span class="mi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg></span>
+      <h4>Drift-band, not calendar</h4>
+      <p>Kestrel rebalances only when a holding drifts past its band — often in volatile stretches, rarely in calm ones. No needless trading.</p>
+    </div>
+    <div class="mcard">
+      <span class="mi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span>
+      <h4>Non-custodial by design</h4>
+      <p>Your assets stay in your wallet. Kestrel can rebalance between your holdings but can never withdraw to itself.</p>
+    </div>
+    <div class="mcard">
+      <span class="mi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6l-8-4Z"/></svg></span>
+      <h4>Real, tokenized securities</h4>
+      <p>Holdings are 1:1 tokenized US stocks, ETFs, gold and silver via Backpack Securities — tradeable 24/7 on Solana. The metals sleeve allocates across gold (GLD) and silver (SILV, by Dominion).</p>
+    </div>
+  </div>
+
+  <section class="ea-band">
+    <div class="ea-band-in">
+      <span class="ea-eyebrow"><i></i>Now onboarding · Limited first cohort</span>
+      <h2>Find your portfolio.</h2>
+      <p>Kestrel is opening to a small group of early investors. Reserve your place with your wallet and email — every request is reviewed, and we'll reach out as access opens.</p>
+      <button class="btn solid js-ea" type="button">Request early access</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot-links">
+      <a href="whitepaper.html">Whitepaper</a>
+      <a href="prospectus.html">Prospectus</a>
+      <a href="portfolios.html">Portfolios</a>
+      <a href="edge.html">Edge</a>
+      <a href="vane.html">VANE</a>
+      <a href="x402.html">x402</a>
+      <a href="contact.html">Contact</a>
+      <span class="foot-contact">
+        <a class="foot-x" href="https://x.com/KestrelInvest" target="_blank" rel="noopener" aria-label="Kestrel on X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+      </span>
+    </div>
+    <div class="foot-bottom">
+      <span class="cap">Illustrative allocations — not investment advice or a forecast. Tokenized US securities via Backpack Securities, traded 24/7 on Solana.</span>
+      <span class="foot-meta"><a class="foot-dom" href="index.html">kestrelinvest.xyz</a><span class="bpbadge"><svg class="bp"><use href="#bp"/></svg>Powered by Backpack Securities</span></span>
+    </div>
+  </footer>
+</div>
+
+<div class="ea-overlay" id="eaOverlay" hidden>
+  <div class="ea-modal" role="dialog" aria-modal="true" aria-labelledby="eaTitle">
+    <button class="ea-close" id="eaClose" type="button" aria-label="Close">&#10005;</button>
+    <div class="ea-view" id="eaFormView">
+      <span class="ea-eyebrow"><i></i>Early access · Limited first cohort</span>
+      <h2 id="eaTitle">Request an invitation</h2>
+      <p class="ea-sub">We're onboarding a small first cohort. Reserve your place — every request is reviewed before access opens.</p>
+      <form id="eaForm" novalidate>
+        <label class="ea-field">
+          <span class="ea-lab">Solana wallet address</span>
+          <input type="text" id="eaWallet" name="wallet" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="e.g. 7xKX…9dPq" />
+          <span class="ea-err" id="eaWalletErr" role="alert"></span>
+        </label>
+        <label class="ea-field">
+          <span class="ea-lab">Email address</span>
+          <input type="email" id="eaEmail" name="email" autocomplete="email" placeholder="you@email.com" />
+          <span class="ea-err" id="eaEmailErr" role="alert"></span>
+        </label>
+        <button class="btn solid ea-submit" id="eaSubmit" type="submit">Request early access</button>
+        <p class="ea-trust"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span>Non-custodial. Your address only whitelists early access — Kestrel never takes custody or asks for your keys.</span></p>
+      </form>
+    </div>
+    <div class="ea-view ea-done" id="eaDoneView" hidden>
+      <div class="ea-check"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <h2>Request received</h2>
+      <p class="ea-sub">You're on the early-access list. We review every request personally and will email you the moment your cohort opens.</p>
+      <button class="btn solid" id="eaDoneClose" type="button">Done</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var $=function(id){ return document.getElementById(id); };
+  var NAME={SGOV:"Treasuries",GLD:"Gold",SILV:"Silver",SPY:"S&P 500 ETF",QQQ:"Nasdaq-100 ETF",SCHD:"Dividend ETF","BRK.B":"Berkshire",AAPL:"Apple",MSFT:"Microsoft",JPM:"JPMorgan",AMZN:"Amazon",NVDA:"Nvidia",META:"Meta",HOOD:"Robinhood",PLTR:"Palantir",TSLA:"Tesla",MU:"Micron",SPCX:"SpaceX",MSTR:"Strategy",COIN:"Coinbase"};
+  var BRAND={ SGOV:['#6b7787','T'], GLD:['#b8901e','Au'], SILV:['#8f9aa8','Ag'], SPY:['#2f6fed','S'], QQQ:['#5a3fd6','Q'],
+    SCHD:['#0f9e8e','D'], AAPL:['#4b4f56','A'], MSFT:['#2f8f3e','MS'], 'BRK.B':['#1b3a6b','B'],
+    JPM:['#005eb8','J'], AMZN:['#e8830c','a'], NVDA:['#5c8a00','N'], META:['#0866ff','∞'],
+    HOOD:['#00b34a','H'], PLTR:['#14161a','P'], TSLA:['#e82127','T'], MU:['#0a4d8c','MU'],
+    SPCX:['#14161a','X'], MSTR:['#f7931a','₿'], COIN:['#0052ff','C'] };
+  var DOMAIN={ SGOV:'ishares.com', GLD:'spdrgoldshares.com', SILV:'dominion.market', SPY:'ssga.com', QQQ:'invesco.com',
+    SCHD:'schwab.com', AAPL:'apple.com', MSFT:'microsoft.com', 'BRK.B':'berkshirehathaway.com',
+    JPM:'jpmorganchase.com', AMZN:'amazon.com', NVDA:'nvidia.com', META:'meta.com',
+    HOOD:'robinhood.com', PLTR:'palantir.com', TSLA:'tesla.com', MU:'micron.com',
+    SPCX:'spacex.com', MSTR:'strategy.com', COIN:'coinbase.com' };
+  function logoUrl(dom){ return "https://www.google.com/s2/favicons?domain="+dom+"&sz=64"; }
+  var PORT=[
+    {k:"Roost", tier:"Conservative", tc:"r1", thesis:"Safety first — half in blue-chip stocks, half in cash & Treasuries.",
+     holds:[["SPY",25],["SCHD",15],["AAPL",10],["SGOV",50]]},
+    {k:"Perch", tier:"Moderate", tc:"r2", thesis:"Balanced — a core of index funds and blue-chips, a little gold &amp; silver, cash in reserve.",
+     holds:[["SPY",25],["QQQ",15],["AAPL",10],["MSFT",10],["BRK.B",10],["GLD",5],["SGOV",25]]},
+    {k:"Soar", tier:"Growth", tc:"r3", thesis:"Growth-focused — leading tech and growth names, a gold hedge, a sliver of cash.",
+     holds:[["QQQ",20],["MSFT",13],["AMZN",12],["NVDA",20],["META",10],["HOOD",10],["GLD",5],["SGOV",10]]},
+    {k:"Apex", tier:"Aggressive", tc:"r4", thesis:"Swing big — high-growth and speculative names, fully invested with a gold &amp; silver hedge.",
+     holds:[["NVDA",18],["HOOD",12],["PLTR",10],["TSLA",9],["MU",7],["SPCX",16],["MSTR",10],["COIN",8],["GLD",5],["SILV",5]]}
+  ];
+  function bg(c){ return "linear-gradient(150deg,color-mix(in srgb,"+c+" 78%,#fff),"+c+")"; }
+  function bucket(k){ return k==="SGOV"?"cash":((k==="GLD"||k==="SILV")?"gold":"stock"); }
+
+  // curated, legible slice palette — bright + distinct, reads clearly on dark AND light; stocks cycle these, gold/cash keep semantic colors
+  var STOCK_PAL=["#38bdf8","#34d399","#a78bfa","#f472b6","#22d3ee","#a3e635","#fb923c","#f87171","#818cf8"];
+  // ---- render portfolio cards ----
+  $("plist").innerHTML = PORT.map(function(p, idx){
+    var stock=0,gold=0,cash=0;
+    p.holds.forEach(function(h){ var b=bucket(h[0]); if(b==="cash")cash+=h[1]; else if(b==="gold")gold+=h[1]; else stock+=h[1]; });
+    // one clean color per holding — shared by the donut slice AND the holdings-table bar (so the table is the legend)
+    var si=0, colorOf={};
+    p.holds.forEach(function(h){ var k=h[0], b=bucket(k); colorOf[k]= b==="cash" ? "#9fb0a6" : (b==="gold" ? (k==="SILV" ? "#b9c4d0" : "#e0b736") : STOCK_PAL[si++ % STOCK_PAL.length]); });
+    var acc=0, stops=[];
+    p.holds.forEach(function(h){ var c=colorOf[h[0]], a=h[1];
+      stops.push("var(--surface) "+acc+"% "+(acc+0.6)+"%"); stops.push(c+" "+(acc+0.6)+"% "+(acc+a-0.6)+"%"); acc+=a; });
+    var conic="conic-gradient("+stops.join(",")+")";
+    var maxw=Math.max.apply(null, p.holds.map(function(h){return h[1];}));
+    var rows=p.holds.map(function(h){ var k=h[0], c=(BRAND[k]||['#6b7787','?']), dom=DOMAIN[k];
+      var tile='<span class="hlogo'+(dom?'':' fallback')+'" data-m="'+c[1]+'" style="--bc:'+c[0]+'">'
+        +(dom?'<img src="'+logoUrl(dom)+'" alt="" width="64" height="64" loading="lazy" referrerpolicy="no-referrer">':'')+'</span>';
+      return '<div class="hrow">'+tile
+        +'<span class="hnm"><b>'+k+'</b><span>'+NAME[k]+'</span></span>'
+        +'<span class="hbar"><i style="width:'+(h[1]/maxw*100)+'%;background:'+colorOf[k]+'"></i></span>'
+        +'<span class="hw">'+h[1]+'%</span></div>';
+    }).join("");
+    var split=''
+      +(stock?'<div class="sr"><span>Stocks</span><b>'+stock+'%</b></div>':'')
+      +(gold?'<div class="sr"><span>Gold &amp; Silver</span><b>'+gold+'%</b></div>':'')
+      +(cash?'<div class="sr"><span>Cash &amp; Treasuries</span><b>'+cash+'%</b></div>':'');
+    return '<section class="pf" id="pf-'+p.k.toLowerCase()+'">'
+      +'<div class="pf-top"><div class="pf-rank">0'+(idx+1)+'</div>'
+        +'<div class="pf-title"><h3>'+p.k+'</h3><p>'+p.thesis+'</p></div>'
+        +'<span class="pf-tag '+p.tc+'">'+p.tier+'</span></div>'
+      +'<div class="pf-body">'
+        +'<div class="pf-alloc"><div class="donut" style="background:'+conic+'"><div class="donut-c"><b>'+(stock+gold)+'%</b><span>Invested</span></div></div>'
+          +'<div class="split">'+split+'</div></div>'
+        +'<div class="pf-holds"><div class="hh"><span>'+p.holds.length+' holdings</span><span>Target</span></div>'+rows+'</div>'
+      +'</div></section>';
+  }).join("");
+  // logos fall back to the branded tile when they can't load (offline / CSP sandbox)
+  Array.prototype.forEach.call(document.querySelectorAll("#plist .hlogo img"), function(img){
+    function fb(){ var t=img.parentNode; if(t){ t.classList.add("fallback"); } img.remove(); }
+    img.addEventListener("error", fb);
+    if(img.complete && img.naturalWidth===0) fb();
+  });
+
+  // ---- rebalance demonstration ----
+  var SEG=[
+    {name:"Stocks", c:"var(--accent)", tgt:60, drift:73},
+    {name:"Metals", c:"var(--gold)",   tgt:12, drift:9},
+    {name:"Cash",   c:"var(--cash)",   tgt:28, drift:18}
+  ];
+  var rebBar=$("rebBar"), rebCap=$("rebCap"), rebLeg=$("rebLegend"), steps=document.querySelectorAll(".reb-step");
+  rebBar.innerHTML=SEG.map(function(s){ return '<span style="background:'+s.c+'"></span>'; }).join("");
+  rebLeg.innerHTML=SEG.map(function(s){ return '<span><i style="background:'+s.c+'"></i>'+s.name+'</span>'; }).join("");
+  var rebSpans=rebBar.children;
+  var CAP=[
+    'Your target: <b>60% stocks · 12% gold · 28% cash</b>.',
+    'Stocks rallied to <b>73%</b> — your mix is now riskier than you chose.',
+    'Kestrel <b>trimmed stocks, topped up gold &amp; cash</b> — back to target.'
+  ];
+  function setStep(n){
+    for(var i=0;i<rebSpans.length;i++){
+      var w = n===1 ? SEG[i].drift : SEG[i].tgt;
+      rebSpans[i].style.width=w+"%";
+      rebSpans[i].textContent = w>=10 ? w+"%" : "";
+    }
+    for(var j=0;j<steps.length;j++) steps[j].classList.toggle("on", j===n);
+    rebCap.innerHTML=CAP[n];
+  }
+  var rstep=0, reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  setStep(0);
+  if(!reduce){
+    setTimeout(function(){ setStep(1); }, 900);
+    setInterval(function(){ rstep=(rstep+1)%3; setStep(rstep); }, 2600);
+  } else { setStep(2); }
+  Array.prototype.forEach.call(steps, function(s){ s.addEventListener("click", function(){ rstep=+s.getAttribute("data-s"); setStep(rstep); }); });
+
+  // ---- nav + early-access modal (shared behavior) ----
+  var navToggle=$("navToggle"), navLinks=$("navLinks");
+  function closeNav(){ navLinks.classList.remove("open"); navToggle.setAttribute("aria-expanded","false"); }
+  navToggle.addEventListener("click", function(){ var o=navLinks.classList.toggle("open"); navToggle.setAttribute("aria-expanded", o?"true":"false"); });
+  Array.prototype.forEach.call(navLinks.querySelectorAll("a"), function(a){ a.addEventListener("click", function(e){ if(a.getAttribute("href")==="#"){ e.preventDefault(); } closeNav(); }); });
+
+  var EA_ENDPOINT="";
+  var overlay=$("eaOverlay"), formView=$("eaFormView"), doneView=$("eaDoneView");
+  var eaForm=$("eaForm"), eaWallet=$("eaWallet"), eaEmail=$("eaEmail"), eaWErr=$("eaWalletErr"), eaEErr=$("eaEmailErr"), eaSubmit=$("eaSubmit");
+  var lastFocus=null, emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  function isSolAddress(a){
+    if(!/^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(a)) return false;
+    var AL="123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz", bytes=[0], i, j;
+    for(i=0;i<a.length;i++){ var v=AL.indexOf(a.charAt(i)); if(v<0) return false; var carry=v;
+      for(j=0;j<bytes.length;j++){ carry+=bytes[j]*58; bytes[j]=carry&0xff; carry>>=8; }
+      while(carry){ bytes.push(carry&0xff); carry>>=8; } }
+    for(i=0;i<a.length && a.charAt(i)==='1';i++) bytes.push(0);
+    return bytes.length===32;
+  }
+  function setErr(inp,e,m){ inp.closest(".ea-field").classList.add("bad"); e.textContent=m; }
+  function clrErr(inp,e){ inp.closest(".ea-field").classList.remove("bad"); e.textContent=""; }
+  eaWallet.addEventListener("input", function(){ clrErr(eaWallet,eaWErr); });
+  eaEmail.addEventListener("input", function(){ clrErr(eaEmail,eaEErr); });
+  function openEA(){ closeNav(); lastFocus=document.activeElement; formView.hidden=false; doneView.hidden=true; overlay.hidden=false; document.body.classList.add("ea-lock"); setTimeout(function(){ eaWallet.focus(); },40); }
+  function closeEA(){ overlay.hidden=true; document.body.classList.remove("ea-lock"); if(lastFocus&&lastFocus.focus) lastFocus.focus(); }
+  Array.prototype.forEach.call(document.querySelectorAll(".js-ea"), function(b){ b.addEventListener("click", openEA); });
+  $("eaClose").addEventListener("click", closeEA);
+  $("eaDoneClose").addEventListener("click", closeEA);
+  overlay.addEventListener("click", function(e){ if(e.target===overlay) closeEA(); });
+  document.addEventListener("keydown", function(e){ if(e.key==="Escape" && !overlay.hidden) closeEA(); });
+  function sendEA(w,em){
+    try{ localStorage.setItem("kestrel_ea", JSON.stringify({wallet:w,email:em})); }catch(_){}
+    if(!EA_ENDPOINT) return Promise.resolve();
+    return fetch(EA_ENDPOINT,{ method:"POST", headers:{"Content-Type":"application/json","Accept":"application/json"}, body:JSON.stringify({wallet:w,email:em,source:"kestrelinvest.xyz/portfolios"}) }).then(function(r){ if(!r.ok) throw new Error("x"); });
+  }
+  eaForm.addEventListener("submit", function(e){
+    e.preventDefault();
+    var w=eaWallet.value.trim(), em=eaEmail.value.trim(), ok=true;
+    if(!isSolAddress(w)){ setErr(eaWallet,eaWErr,"Enter a valid Solana wallet address."); ok=false; } else clrErr(eaWallet,eaWErr);
+    if(!emailRe.test(em)){ setErr(eaEmail,eaEErr,"Enter a valid email address."); ok=false; } else clrErr(eaEmail,eaEErr);
+    if(!ok) return;
+    eaSubmit.disabled=true; eaSubmit.textContent="Submitting…";
+    sendEA(w,em).then(function(){ formView.hidden=true; doneView.hidden=false; setTimeout(function(){ $("eaDoneClose").focus(); },40); })
+      .catch(function(){ eaSubmit.disabled=false; eaSubmit.textContent="Request early access"; setErr(eaEmail,eaEErr,"Something went wrong — please try again."); });
+  });
+})();
+
+  /* ---------- fit quiz ---------- */
+  (function(){
+    var QQ=function(id){ return document.getElementById(id); };
+    var QS=[
+      {q:"If your portfolio dropped 20% in a month, you would…", sub:"Be honest — this is the one that matters.",
+       o:[["Sell — I couldn't watch it fall further",0],["Hold and wait it out",1],["Buy more at the discount",2]]},
+      {q:"When do you expect to need this money?", sub:"Your time horizon.",
+       o:[["Within 3 years",0],["3–10 years out",1],["10+ years — this is long-term capital",2]]},
+      {q:"What's the goal for this account?", sub:"",
+       o:[["Protect what I have",0],["Steady growth with guardrails",1],["Maximum growth — I accept the swings",2]]},
+      {q:"How much investing experience do you have?", sub:"",
+       o:[["I'm new to this",0],["I've held funds or stocks for years",1],["Very experienced — I trade and understand drawdowns",2]]},
+      {q:"How much of your total savings would this be?", sub:"",
+       o:[["Most of it",0],["A meaningful slice",1],["A small part — I'm diversified elsewhere",2]]}
+    ];
+    var MAP=[["Roost","r1","Conservative","50% stocks · 50% cash & Treasuries",
+              "conic-gradient(var(--accent) 0 180deg, var(--cash) 180deg 360deg)"],
+             ["Perch","r2","Moderate","70% stocks · 5% metals · 25% cash",
+              "conic-gradient(var(--accent) 0 252deg, var(--gold) 252deg 270deg, var(--cash) 270deg 360deg)"],
+             ["Soar","r3","Growth","85% stocks · 5% metals · 10% cash",
+              "conic-gradient(var(--accent) 0 306deg, var(--gold) 306deg 324deg, var(--cash) 324deg 360deg)"],
+             ["Apex","r4","Aggressive","90% stocks · 10% metals",
+              "conic-gradient(var(--accent) 0 324deg, var(--gold) 324deg 360deg)"]];
+    var stepEl=QQ("qStep"), resEl=QQ("qResult"), progEl=QQ("qProg");
+    if(!stepEl) return;
+    var idx=0, answers=[];
+    function prog(){ progEl.innerHTML=QS.map(function(_,i){ return '<i class="'+(i<=idx&&resEl.className.indexOf("show")<0? (i<idx?"on":"on") : (resEl.className.indexOf("show")>=0?"on":""))+'"></i>'; }).join(""); }
+    function step(){
+      resEl.className="q-result"; stepEl.style.display="";
+      var q=QS[idx];
+      stepEl.innerHTML='<h3>'+q.q+'</h3>'+(q.sub?'<p class="q-sub">'+q.sub+'</p>':'')
+        +'<div class="q-opts">'+q.o.map(function(o,i){ return '<button class="q-opt" type="button" data-v="'+o[1]+'"><b>'+o[0]+'</b></button>'; }).join("")+'</div>'
+        +(idx>0?'<button class="q-back" type="button" id="qBack">← Back</button>':'');
+      progEl.innerHTML=QS.map(function(_,i){ return '<i class="'+(i<idx?"on":(i===idx?"on":""))+'"></i>'; }).join("");
+      Array.prototype.forEach.call(stepEl.querySelectorAll(".q-opt"), function(b){
+        b.addEventListener("click", function(){ answers[idx]=+b.getAttribute("data-v");
+          if(idx<QS.length-1){ idx++; step(); } else { result(); } });
+      });
+      var bk=QQ("qBack"); if(bk) bk.addEventListener("click", function(){ idx=Math.max(0,idx-1); step(); });
+    }
+    function result(){
+      var sum=answers.reduce(function(a,b){return a+b;},0);           // 0..10
+      var horizon=answers[1], pick;
+      if(sum<=2) pick=0; else if(sum<=5) pick=1; else if(sum<=8) pick=2; else pick=3;
+      if(horizon===0 && pick>1) pick=1;                                // short horizon caps risk
+      var m=MAP[pick];
+      stepEl.style.display="none";
+      progEl.innerHTML=QS.map(function(){ return '<i class="on"></i>'; }).join("");
+      resEl.innerHTML='<span class="pf-tag qr-tag '+m[1]+'">'+m[2]+'</span>'
+        +'<div class="qr-donut" style="background:'+m[4]+'"></div>'
+        +'<h3>Your fit: '+m[0]+'</h3>'
+        +'<p class="qr-split">'+m[3]+'</p>'
+        +'<div class="qr-cta"><a class="btn" href="#pf-'+m[0].toLowerCase()+'">See the full breakdown ↓</a>'
+        +'<button class="btn solid js-ea2" type="button">Request early access</button></div>'
+        +'<button class="q-back" type="button" id="qRetake">Retake the quiz</button>'
+        +'<p class="qr-note">Guidance from your answers — not investment advice. You can pick any portfolio you like.</p>';
+      resEl.className="q-result show";
+      QQ("qRetake").addEventListener("click", function(){ idx=0; answers=[]; step(); });
+      var ea=resEl.querySelector(".js-ea2"); if(ea) ea.addEventListener("click", function(){ var t=document.querySelector(".js-ea"); if(t) t.click(); });
+    }
+    step();
+  })();
+</script>
+
+<script src="elevate.js" defer></script>
+</body>
+</html>

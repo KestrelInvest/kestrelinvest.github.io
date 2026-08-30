@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kestrel Edge — the aggressive wing</title>
+<meta name="description" content="Kestrel Edge — the aggressive wing of the agentic advisor. A disciplined, risk-railed memecoin basket on Solana, drift-band rebalanced 24/7. In development, tracked live.">
+<link rel="canonical" href="https://kestrelinvest.xyz/edge.html">
+<meta name="theme-color" content="#0e9f6e" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#04140d" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kestrel">
+<meta property="og:title" content="Kestrel Edge — the aggressive wing">
+<meta property="og:description" content="Kestrel Edge — the aggressive wing of the agentic advisor. A disciplined, risk-railed memecoin basket on Solana, drift-band rebalanced 24/7. In development, tracked live.">
+<meta property="og:url" content="https://kestrelinvest.xyz/edge.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kestrel Edge — the aggressive wing">
+<meta name="twitter:description" content="Kestrel Edge — the aggressive wing of the agentic advisor. A disciplined, risk-railed memecoin basket on Solana, drift-band rebalanced 24/7. In development, tracked live.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230e9f6e'/%3E%3Cg fill='%23eafff4'%3E%3Cpath d='M47 52 C 37 40 27 31 13 26 C 20 40 30 51 43 57 Z'/%3E%3Cpath d='M45 55 C 42 49 43 42 49 38 C 47 35 46 31 49 28 C 52 31 53 35 52 39 C 58 43 60 51 56 60 L 68 82 L 57 73 L 54 88 L 50 71 C 47 66 46 61 45 55 Z'/%3E%3Cpath d='M51 40 C 63 27 76 19 93 15 C 80 28 67 40 55 47 Z'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root {
+    --bg:#f5f8f6; --surface:#ffffff; --surface-2:#f0f5f1;
+    --ink:#0e211a; --muted:#5a6f64; --line:rgba(14,33,26,.10); --card-line:rgba(14,33,26,.09);
+    --accent:#0e9f6e; --accent-ink:#0a7d56; --glow:rgba(14,159,110,.14); --market:#d2604f;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#070c0a; --surface:#0f1713; --surface-2:#131d17; --ink:#e9f2ec; --muted:#83988c;
+      --line:rgba(255,255,255,.08); --card-line:rgba(255,255,255,.07);
+      --accent:#2ee6a0; --accent-ink:#68f0bd; --glow:rgba(46,230,160,.16); --market:#f2836e; }
+  }
+  :root[data-theme="light"] { --bg:#f5f8f6; --surface:#ffffff; --surface-2:#f0f5f1; --ink:#0e211a; --muted:#5a6f64; --line:rgba(14,33,26,.10); --card-line:rgba(14,33,26,.09); --accent:#0e9f6e; --accent-ink:#0a7d56; --glow:rgba(14,159,110,.14); --market:#d2604f; }
+  :root[data-theme="dark"] { --bg:#070c0a; --surface:#0f1713; --surface-2:#131d17; --ink:#e9f2ec; --muted:#83988c; --line:rgba(255,255,255,.08); --card-line:rgba(255,255,255,.07); --accent:#2ee6a0; --accent-ink:#68f0bd; --glow:rgba(46,230,160,.16); --market:#f2836e; }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; color: var(--ink); position: relative;
+    font: 15.5px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased;
+    background: radial-gradient(120% 55% at 50% -12%, var(--glow), transparent 52%), var(--bg); }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 30px; }
+  a { color: inherit; }
+
+  nav { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(12px); background: color-mix(in srgb, var(--bg) 78%, transparent); border-bottom: 1px solid var(--line); }
+  .nav-in { max-width: 1180px; margin: 0 auto; padding: 14px 30px; display: flex; align-items: center; gap: 14px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; }
+  .brand .logo { width: 26px; height: 26px; color: var(--accent); }
+  .brand b { font-size: 16px; letter-spacing: 3px; font-weight: 650; }
+  .brand .tm { font-size: 8px; font-weight: 600; letter-spacing: 0; vertical-align: super; margin-left: -1px; color: var(--muted); }
+  .nav-links { margin-left: auto; display: flex; align-items: center; gap: 22px; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; font-family: inherit; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-toggle { display: none; margin-left: auto; width: 40px; height: 40px; border: 1px solid var(--card-line); border-radius: 10px; background: var(--surface); cursor: pointer; padding: 0; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
+  .nav-toggle span { display: block; width: 18px; height: 2px; border-radius: 2px; background: var(--ink); transition: transform .2s ease, opacity .2s ease; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .btn { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--accent); color: var(--accent-ink); background: transparent; padding: 9px 17px; border-radius: 10px; font-size: 14px; font-weight: 600; font-family: inherit; text-decoration: none; cursor: pointer; transition: all .16s ease; }
+  .btn:hover { background: var(--accent); color: #04140d; box-shadow: 0 8px 24px var(--glow); }
+  .btn.solid { background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 90%, #fff), var(--accent)); color: #04140d; border-color: transparent; font-weight: 650; letter-spacing: -.004em; box-shadow: 0 1px 1px rgba(0,0,0,.10), 0 8px 20px -10px var(--glow); }
+  .btn.solid:hover { transform: translateY(-1px); background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 96%, #fff), var(--accent)); box-shadow: 0 2px 4px rgba(0,0,0,.12), 0 14px 30px -10px var(--glow); }
+  .btn.solid:active { transform: translateY(0); }
+  .btn:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 2px; }
+  .eyebrow { font-family: ui-monospace, monospace; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--accent-ink); margin: 0 0 16px; }
+
+  .chero { padding: 58px 0 8px; max-width: 640px; }
+  .chero h1 { margin: 0; font-size: clamp(34px, 5vw, 54px); line-height: 1.04; font-weight: 800; letter-spacing: -.035em; }
+  .chero p { margin: 20px 0 0; font-size: 18px; color: var(--muted); }
+
+  .cgrid { display: grid; grid-template-columns: 380px 1fr; gap: 26px; padding: 34px 0 12px; align-items: start; }
+
+  /* contact channels */
+  .channels { display: flex; flex-direction: column; gap: 12px; }
+  .chan { display: flex; align-items: center; gap: 14px; padding: 16px 18px; border: 1px solid var(--card-line); border-radius: 16px; background: var(--surface); text-decoration: none; color: inherit; transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease; }
+  .chan:hover { border-color: color-mix(in srgb, var(--accent) 45%, var(--card-line)); transform: translateY(-1px); box-shadow: 0 12px 28px -18px var(--glow); }
+  .chan .ci { width: 42px; height: 42px; border-radius: 12px; flex: none; display: flex; align-items: center; justify-content: center; background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent-ink); }
+  .chan .ci svg { width: 20px; height: 20px; }
+  .chan .cx { flex: 1; min-width: 0; }
+  .chan .cl, .cv { display: block; }
+  .cl { font-family: ui-monospace, monospace; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .chan .cv { font-size: 15px; font-weight: 650; margin-top: 2px; letter-spacing: -.01em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .chan .car { color: var(--muted); flex: none; transition: color .15s ease; }
+  .chan:hover .car { color: var(--accent-ink); }
+  .assurance { margin-top: 6px; padding: 16px 18px; border: 1px dashed var(--card-line); border-radius: 14px; color: var(--muted); font-size: 13px; line-height: 1.55; }
+  .assurance b { color: var(--ink); }
+
+  /* inquiry form */
+  .cform-wrap { border: 1px solid var(--card-line); border-radius: 20px; background: var(--surface); padding: 30px 30px 26px; box-shadow: 0 30px 70px -50px var(--glow); }
+  .cform-wrap h2 { margin: 0 0 6px; font-size: 22px; font-weight: 750; letter-spacing: -.02em; }
+  .cform-wrap .fh { margin: 0 0 20px; color: var(--muted); font-size: 14.5px; }
+  .fields { display: flex; flex-direction: column; gap: 14px; }
+  .field label { display: block; font-size: 12.5px; font-weight: 600; margin-bottom: 6px; }
+  .field input, .field textarea { width: 100%; padding: 12px 13px; border: 1px solid var(--card-line); border-radius: 11px; background: var(--bg); color: var(--ink); font: inherit; font-size: 15px; transition: border-color .15s ease, box-shadow .15s ease; }
+  .field textarea { min-height: 148px; resize: vertical; line-height: 1.6; }
+  .field input:focus, .field textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--glow); }
+  .field.bad input, .field.bad textarea { border-color: var(--market); }
+  .ferr { display: block; min-height: 15px; margin-top: 5px; font-size: 12px; color: var(--market); }
+  .csubmit { width: 100%; justify-content: center; padding: 14px; font-size: 15px; margin-top: 4px; }
+  .csubmit[disabled] { opacity: .6; cursor: default; }
+  .cdone { text-align: center; padding: 20px 6px; }
+  .cdone .ck { width: 58px; height: 58px; margin: 0 auto 14px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #04140d; background: var(--accent); box-shadow: 0 0 0 8px var(--glow); }
+  .cdone h2 { margin: 0 0 8px; font-size: 22px; font-weight: 750; }
+  .cdone p { margin: 0 auto; color: var(--muted); font-size: 14.5px; max-width: 40ch; }
+  .cdone a { color: var(--accent-ink); font-weight: 600; text-decoration: none; }
+
+  /* early-access modal (shared) */
+  .ea-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-ink); }
+  .ea-eyebrow i { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--glow); }
+  .ea-overlay { position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center; padding: 20px; background: color-mix(in srgb, #04140d 55%, transparent); backdrop-filter: blur(6px); animation: eaFade .2s ease; }
+  .ea-overlay[hidden] { display: none; }
+  @keyframes eaFade { from { opacity: 0; } to { opacity: 1; } }
+  .ea-modal { position: relative; width: 100%; max-width: 440px; background: var(--surface); border: 1px solid var(--card-line); border-radius: 20px; padding: 32px 30px 28px; box-shadow: 0 50px 100px -30px rgba(0,0,0,.5); animation: eaRise .25s cubic-bezier(.2,.7,.2,1); max-height: calc(100dvh - 40px); overflow-y: auto; }
+  @keyframes eaRise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  .ea-close { position: absolute; top: 14px; right: 14px; width: 32px; height: 32px; border: none; border-radius: 9px; background: var(--surface-2); color: var(--muted); font-size: 13px; cursor: pointer; }
+  .ea-close:hover { color: var(--ink); }
+  .ea-modal h2 { margin: 14px 0 8px; font-size: 23px; font-weight: 750; letter-spacing: -.02em; }
+  .ea-sub { margin: 0 0 20px; color: var(--muted); font-size: 14px; line-height: 1.5; }
+  .ea-field { display: block; margin-bottom: 14px; }
+  .ea-lab { display: block; font-size: 12.5px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+  .ea-field input { width: 100%; padding: 12px 13px; border: 1px solid var(--card-line); border-radius: 11px; background: var(--bg); color: var(--ink); font: inherit; font-size: 15px; }
+  #eaWallet { font-family: ui-monospace, monospace; font-size: 13.5px; }
+  .ea-field input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--glow); }
+  .ea-field.bad input { border-color: var(--market); }
+  .ea-err { display: block; min-height: 15px; margin-top: 5px; font-size: 12px; color: var(--market); }
+  .ea-submit { width: 100%; justify-content: center; padding: 13px; margin-top: 4px; font-size: 15px; }
+  .ea-submit[disabled] { opacity: .6; cursor: default; }
+  .ea-trust { display: flex; align-items: flex-start; gap: 8px; margin: 16px 0 0; font-size: 11.5px; line-height: 1.5; color: var(--muted); }
+  .ea-trust svg { flex: none; margin-top: 1px; color: var(--accent-ink); }
+  .ea-done { text-align: center; }
+  .ea-check { width: 58px; height: 58px; margin: 4px auto 4px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #04140d; background: var(--accent); box-shadow: 0 0 0 8px var(--glow); }
+  .ea-done .btn { margin-top: 18px; }
+  body.ea-lock { overflow: hidden; }
+
+  footer { margin-top: 44px; border-top: 1px solid var(--line); padding: 28px 0 52px; display: flex; flex-direction: column; gap: 20px; }
+  footer .cap { color: var(--muted); font-size: 11.5px; max-width: 56ch; }
+  .foot-links { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
+  .foot-links a { color: var(--muted); text-decoration: none; font-size: 14px; }
+  .foot-links a:hover { color: var(--ink); }
+  .foot-contact { margin-left: auto; display: inline-flex; align-items: center; gap: 12px; }
+  .foot-x { display: inline-flex; width: 34px; height: 34px; align-items: center; justify-content: center; border: 1px solid var(--card-line); border-radius: 9px; color: var(--ink); transition: border-color .15s ease, background .15s ease; }
+  .foot-x:hover { border-color: var(--accent); }
+  .foot-x svg { width: 15px; height: 15px; }
+  .foot-bottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: center; }
+  .foot-meta { display: inline-flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .foot-dom { font-family: ui-monospace, monospace; font-size: 12px; letter-spacing: .04em; color: var(--accent-ink); text-decoration: none; font-weight: 600; }
+  .bpbadge { display: inline-flex; align-items: center; gap: 7px; font-family: ui-monospace, monospace; font-size: 11.5px; letter-spacing: .04em; color: var(--muted); }
+  .bpbadge .bp { width: 15px; height: 15px; color: var(--accent-ink); flex: none; }
+
+  @media (max-width: 820px) { .cgrid { grid-template-columns: 1fr; gap: 18px; } }
+  @media (max-width: 680px) {
+    .wrap { padding: 0 18px; }
+    .nav-in { padding: 12px 18px; gap: 10px; position: relative; }
+    .nav-toggle { display: flex; }
+    .nav-links { position: absolute; top: calc(100% + 1px); left: 0; right: 0; margin: 0; flex-direction: column; align-items: stretch; gap: 0; background: var(--surface); border-bottom: 1px solid var(--line); box-shadow: 0 20px 40px -24px var(--glow); padding: 8px 18px 16px; display: none; }
+    .nav-links.open { display: flex; }
+    .nav-links a { padding: 13px 4px; font-size: 15px; border-bottom: 1px solid var(--card-line); }
+    .nav-links .btn { margin-top: 12px; justify-content: center; padding: 12px; }
+    .chero { padding: 40px 0 4px; }
+    .cform-wrap { padding: 24px 18px 22px; }
+    .ea-overlay { padding: 12px; align-items: flex-end; }
+    .ea-modal { padding: 26px 20px 22px; border-radius: 18px 18px 16px 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  /* KESTREL EDGE */
+  :root{--edge:#ff9a3d;--edge-hot:#ffb86b;--edge-glow:rgba(255,154,61,.14)}
+  .edge-hero p strong{color:var(--edge)}
+  .edge-hot{background:linear-gradient(100deg,var(--edge),#ff6b4a);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .edge-eyebrow{color:var(--edge)!important;display:flex;align-items:center;gap:8px}
+  .edge-dot{width:8px;height:8px;border-radius:50%;background:var(--edge);display:inline-block;box-shadow:0 0 12px var(--edge);animation:edgepulse 1.6s infinite}
+  @keyframes edgepulse{0%,100%{opacity:1}50%{opacity:.35}}
+  .edge-cta{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
+  .edge-ghost{border:1px solid var(--edge);color:var(--edge)!important;background:transparent}
+  .edge-ghost:hover{background:var(--edge-glow)}
+  .edge-live{margin:56px 0;padding:28px;background:var(--surface);border:1px solid var(--card-line);border-radius:20px;box-shadow:0 0 60px var(--edge-glow)}
+  .eg-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;margin-bottom:18px}
+  .eg-head h2{margin:6px 0 0;font-size:26px}
+  .eg-nav-box{text-align:right;display:flex;flex-direction:column;gap:2px}
+  .eg-nav{font-size:34px;font-weight:750;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .eg-ret{font-weight:650;font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .eg-ret.up{color:var(--accent)}.eg-ret.down{color:#ff6b6b}
+  .eg-since{font-size:11px;color:var(--muted)}
+  .eg-table{border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .eg-row{display:grid;grid-template-columns:110px 1fr 80px 130px 110px;gap:8px;padding:13px 16px;border-bottom:1px solid var(--line);align-items:center;font-variant-numeric:tabular-nums}
+  .eg-row:last-child{border-bottom:0}
+  .eg-h{font:600 10px/1 ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);background:var(--surface-2)}
+  .eg-tick{font-weight:750}.eg-name{color:var(--muted);font-size:13px}
+  .eg-w{color:var(--edge);font-weight:650;font-size:13px}
+  .eg-px,.eg-val{text-align:right;font-size:14px}
+  .eg-val{font-weight:650}
+  .edge-how,.edge-vs{margin:56px 0}
+  .edge-how h2,.edge-vs h2{font-size:28px;margin-bottom:20px}
+  .edge-feats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:820px){.edge-feats{grid-template-columns:1fr}.eg-row{grid-template-columns:80px 1fr 56px 100px 90px;padding:12px 12px}}
+  .efeat{background:var(--surface);border:1px solid var(--card-line);border-radius:16px;padding:22px}
+  .efeat h3{margin:10px 0 8px;font-size:17px}.efeat p{color:var(--muted);font-size:14px;line-height:1.55;margin:0}
+  .efi{font-size:20px}
+  .evs{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:640px){.evs{grid-template-columns:1fr}}
+  .evs-col{background:var(--surface);border:1px solid var(--card-line);border-radius:16px;padding:22px}
+  .evs-col h4{margin:0 0 12px;font-size:16px}
+  .evs-col ul{margin:0;padding-left:18px;color:var(--muted);font-size:14px;line-height:1.8}
+  .evs-edge{border-color:var(--edge);box-shadow:0 0 40px var(--edge-glow)}
+  .evs-edge h4{color:var(--edge)}
+  .edge-key{margin-top:18px;color:var(--muted);font-size:14px}
+  .edge-key a{color:var(--edge)}
+  .lp-note{margin-top:16px;font-size:12px;color:var(--muted);max-width:640px}
+
+  .edge-navlink{position:relative}
+  .edge-navdot{position:absolute;top:2px;right:-8px;width:6px;height:6px;border-radius:50%;background:#ff9a3d;display:inline-block;box-shadow:0 0 8px #ff9a3d}
+</style>
+<link rel="stylesheet" href="elevate.css">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="kxNear" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9dffdd"/><stop offset=".5" stop-color="#2ee6a0"/><stop offset="1" stop-color="#0e9f6e"/></linearGradient>
+    <linearGradient id="kxFar" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#15b884"/><stop offset="1" stop-color="#0a7047"/></linearGradient>
+    <linearGradient id="kxBod" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c7ffee"/><stop offset="1" stop-color="#12b07d"/></linearGradient>
+  </defs>
+  <symbol id="kestrel" viewBox="0 0 100 100">
+    <path fill="url(#kxFar)" d="M47 52 C 37 40 27 31 13 26 C 20 40 30 51 43 57 Z"/>
+    <path fill="url(#kxBod)" d="M45 55 C 42 49 43 42 49 38 C 47 35 46 31 49 28 C 52 31 53 35 52 39 C 58 43 60 51 56 60 L 68 82 L 57 73 L 54 88 L 50 71 C 47 66 46 61 45 55 Z"/>
+    <path fill="url(#kxNear)" d="M51 40 C 63 27 76 19 93 15 C 80 28 67 40 55 47 Z"/>
+    <path fill="#2ee6a0" opacity=".75" d="M72 25 C 80 20 86 18 92 16 C 85 23 77 29 69 34 Z"/>
+    <circle cx="50.5" cy="31" r="1.8" fill="#0a1712"/>
+  </symbol>
+  <symbol id="bp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8.5 7.2 a3.5 3.5 0 0 1 7 0"/><rect x="4.2" y="7.2" width="15.6" height="12.8" rx="4.4"/><rect x="8.4" y="12.4" width="7.2" height="7.6" rx="2"/><line x1="10.4" y1="15.4" x2="13.6" y2="15.4"/>
+  </symbol>
+</svg>
+
+<nav>
+  <div class="nav-in">
+    <a class="brand" href="index.html"><svg class="logo"><use href="#kestrel"/></svg><b>KESTREL<span class="tm">&#8482;</span></b></a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <div class="nav-links" id="navLinks">
+      <a href="portfolios.html">Portfolios</a>
+      <a href="prospectus.html">Prospectus</a>
+      <a href="edge.html" class="edge-navlink">Edge<i class="edge-navdot"></i></a>
+      <a href="vane.html">VANE</a>
+      <a href="x402.html">x402</a>
+      <a href="https://pump.fun/coin/G9ALRz5jtq6wG7dijjsb1TvkGatwPNcnhbAGECVQpump" id="tokenLink" target="_blank" rel="noopener">$Kestrel</a>
+      <button class="btn solid js-ea" type="button">Request early access</button>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <header class="chero edge-hero">
+    <p class="eyebrow edge-eyebrow"><i class="edge-dot"></i>Kestrel Edge · The aggressive wing</p>
+    <h1>The advisor, <span class="edge-hot">off the leash.</span></h1>
+    <p>Core Kestrel holds the line. <strong>Edge hunts.</strong> A five-name Solana memecoin basket run by the same agentic engine — equal-weight entries, drift-band rebalances around the clock, and hard risk rails, because this end of the market takes no prisoners.</p>
+    <div class="edge-cta"><button class="btn solid js-ea" type="button">Request early access</button>
+    <a class="btn edge-ghost" href="https://x.com/KestrelInvest/status/2091022978322440237" target="_blank" rel="noopener">Announced on X ↗</a></div>
+  </header>
+
+  <section class="edge-live">
+    <div class="eg-head">
+      <div><p class="eyebrow edge-eyebrow"><i class="edge-dot"></i>Live · real prices</p>
+      <h2>The Edge basket, marked live.</h2></div>
+      <div class="eg-nav-box"><span class="eg-nav" id="egNav">—</span><span class="eg-ret" id="egRet">tracking…</span>
+      <span class="eg-since">paper basket · $10,000 seeded Aug 20, 2026 · equal-weight entries, re-weighted on each add</span></div>
+    </div>
+    <div class="eg-table">
+      <div class="eg-row eg-h"><span class="eg-tick">Token</span><span class="eg-name"></span><span class="eg-w">Weight now</span><span class="eg-px">Price</span><span class="eg-val">Value</span></div>
+      <div class="eg-row" data-t="ANSEM"><span class="eg-tick">ANSEM</span><span class="eg-name">The Black Bull · core since Aug 20</span><span class="eg-w" data-w>—</span><span class="eg-px" data-px>—</span><span class="eg-val" data-val>—</span></div>
+      <div class="eg-row" data-t="KESTREL"><span class="eg-tick">KESTREL</span><span class="eg-name">Kestrel · core since Aug 20</span><span class="eg-w" data-w>—</span><span class="eg-px" data-px>—</span><span class="eg-val" data-val>—</span></div>
+      <div class="eg-row" data-t="FARTCOIN"><span class="eg-tick">FARTCOIN</span><span class="eg-name">Fartcoin · core since Aug 20</span><span class="eg-w" data-w>—</span><span class="eg-px" data-px>—</span><span class="eg-val" data-val>—</span></div>
+      <div class="eg-row" data-t="fone"><span class="eg-tick">fone</span><span class="eg-name">fone · entered Aug 27, 2:04 AM ET at $0.00565</span><span class="eg-w" data-w>—</span><span class="eg-px" data-px>—</span><span class="eg-val" data-val>—</span></div>
+      <div class="eg-row" data-t="PINK"><span class="eg-tick">PINK</span><span class="eg-name">PINK · entered Aug 28, 3:19 AM ET at $0.00118</span><span class="eg-w" data-w>—</span><span class="eg-px" data-px>—</span><span class="eg-val" data-val>—</span></div>
+      </div>
+    <p class="lp-note">Illustrative paper basket — real live prices, <strong>not real money and not a live product</strong>. New names enter six hours after their pool opens, at the next keeper tick (launch hours excluded); thin early liquidity means these marks are not achievable at size. Edge is in development. Memecoins are extremely volatile and can go to zero. Nothing here is an offer, advice, or a projection of returns.</p>
+  </section>
+
+  <section class="edge-how">
+    <h2>Same discipline. Sharper claws.</h2>
+    <div class="edge-feats">
+      <div class="efeat"><span class="efi">⚡</span><h3>Momentum rotation</h3><p>Edge doesn&#39;t marry a coin. The engine scores the memecoin field on liquidity and momentum, and rotates the basket toward strength — mechanically, on schedule, never on vibes.</p></div>
+      <div class="efeat"><span class="efi">🎯</span><h3>Drift-band rebalancing</h3><p>The same engine that runs the core portfolios, tuned hot: tighter bands, 24/7 marks. When a runner blows past its weight, Edge trims into strength and recycles into laggards.</p></div>
+      <div class="efeat"><span class="efi">🛡️</span><h3>Hard risk rails</h3><p>Equal-weight entries. A hard per-name cap. No leverage, ever. And a basket-level drawdown trigger that de-risks to USDC — aggression with a seatbelt, not a death wish.</p></div>
+    </div>
+  </section>
+
+  <section class="edge-vs">
+    <h2>Core vs Edge</h2>
+    <div class="evs">
+      <div class="evs-col"><h4>Core Kestrel</h4><ul><li>Tokenized US stocks, ETFs, gold &amp; silver</li><li>Four risk-laddered portfolios</li><li>Built to hold the line</li></ul></div>
+      <div class="evs-col evs-edge"><h4>Kestrel Edge</h4><ul><li>Solana memecoins — the deep end</li><li>One basket, five names, rotating</li><li>Built to hunt — behind rails</li></ul></div>
+    </div>
+    <p class="edge-key">Edge seats open to the first cohort — <a href="https://pump.fun/coin/G9ALRz5jtq6wG7dijjsb1TvkGatwPNcnhbAGECVQpump" target="_blank" rel="noopener">$KESTREL</a> holders are first in line.</p>
+  </section>
+
+  <footer>
+    <div class="foot-links">
+      <a href="whitepaper.html">Whitepaper</a>
+      <a href="prospectus.html">Prospectus</a>
+      <a href="portfolios.html">Portfolios</a>
+      <a href="edge.html">Edge</a>
+      <a href="vane.html">VANE</a>
+      <a href="x402.html">x402</a>
+      <a href="contact.html">Contact</a>
+      <span class="foot-contact">
+        <a class="foot-x" href="https://x.com/KestrelInvest" target="_blank" rel="noopener" aria-label="Kestrel on X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+      </span>
+    </div>
+    <div class="foot-bottom">
+      <span class="cap">Illustrative and informational — not investment advice or a forecast. Tokenized US securities via Backpack Securities, traded 24/7 on Solana.</span>
+      <span class="foot-meta"><a class="foot-dom" href="index.html">kestrelinvest.xyz</a><span class="bpbadge"><svg class="bp"><use href="#bp"/></svg>Powered by Backpack Securities</span></span>
+    </div>
+  </footer>
+</div>
+
+<div class="ea-overlay" id="eaOverlay" hidden>
+  <div class="ea-modal" role="dialog" aria-modal="true" aria-labelledby="eaTitle">
+    <button class="ea-close" id="eaClose" type="button" aria-label="Close">&#10005;</button>
+    <div class="ea-view" id="eaFormView">
+      <span class="ea-eyebrow"><i></i>Early access · Limited first cohort</span>
+      <h2 id="eaTitle">Request an invitation</h2>
+      <p class="ea-sub">We're onboarding a small first cohort. Reserve your place — every request is reviewed before access opens.</p>
+      <form id="eaForm" novalidate>
+        <label class="ea-field"><span class="ea-lab">Solana wallet address</span>
+          <input type="text" id="eaWallet" name="wallet" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="e.g. 7xKX…9dPq" />
+          <span class="ea-err" id="eaWalletErr" role="alert"></span></label>
+        <label class="ea-field"><span class="ea-lab">Email address</span>
+          <input type="email" id="eaEmail" name="email" autocomplete="email" placeholder="you@email.com" />
+          <span class="ea-err" id="eaEmailErr" role="alert"></span></label>
+        <button class="btn solid ea-submit" id="eaSubmit" type="submit">Request early access</button>
+        <p class="ea-trust"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span>Non-custodial. Your address only whitelists early access — Kestrel never takes custody or asks for your keys.</span></p>
+      </form>
+    </div>
+    <div class="ea-view ea-done" id="eaDoneView" hidden>
+      <div class="ea-check"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <h2>Request received</h2>
+      <p class="ea-sub">You're on the early-access list. We review every request personally and will email you the moment your cohort opens.</p>
+      <button class="btn solid" id="eaDoneClose" type="button">Done</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var $=function(id){ return document.getElementById(id); };
+  var emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  // nav
+  var navToggle=$("navToggle"), navLinks=$("navLinks");
+  function closeNav(){ navLinks.classList.remove("open"); navToggle.setAttribute("aria-expanded","false"); }
+  navToggle.addEventListener("click", function(){ var o=navLinks.classList.toggle("open"); navToggle.setAttribute("aria-expanded", o?"true":"false"); });
+  Array.prototype.forEach.call(navLinks.querySelectorAll("a"), function(a){ a.addEventListener("click", function(e){ if(a.getAttribute("href")==="#"){ e.preventDefault(); } closeNav(); }); });
+
+  // contact inquiry form -> composes an email to info@kestrelinvest.xyz
+  var CONTACT_ENDPOINT=""; // set to a form endpoint later to capture server-side; falls back to mailto compose
+  var cForm=$("cForm"), cEmail=$("cEmail"), cSubject=$("cSubject"), cMessage=$("cMessage");
+  var cEmailErr=$("cEmailErr"), cSubjectErr=$("cSubjectErr"), cMessageErr=$("cMessageErr"), cSubmit=$("cSubmit");
+  function setErr(inp,e,m){ inp.closest(".field").classList.add("bad"); e.textContent=m; }
+  function clrErr(inp,e){ inp.closest(".field").classList.remove("bad"); e.textContent=""; }
+  cEmail.addEventListener("input", function(){ clrErr(cEmail,cEmailErr); });
+  cSubject.addEventListener("input", function(){ clrErr(cSubject,cSubjectErr); });
+  cMessage.addEventListener("input", function(){ clrErr(cMessage,cMessageErr); });
+  function done(){ $("cFormView").hidden=true; $("cDoneView").hidden=false; }
+  function sendContact(email, subject, message){
+    if(CONTACT_ENDPOINT){
+      return fetch(CONTACT_ENDPOINT,{ method:"POST", headers:{"Content-Type":"application/json","Accept":"application/json"},
+        body:JSON.stringify({ email:email, subject:subject, message:message, source:"kestrelinvest.xyz/contact" }) })
+        .then(function(r){ if(!r.ok) throw new Error("x"); });
+    }
+    var body = message + "\n\n— " + email;
+    var href = "mailto:info@kestrelinvest.xyz?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+    window.location.href = href;
+    return Promise.resolve();
+  }
+  cForm.addEventListener("submit", function(e){
+    e.preventDefault();
+    var em=cEmail.value.trim(), sub=cSubject.value.trim(), msg=cMessage.value.trim(), ok=true;
+    if(!emailRe.test(em)){ setErr(cEmail,cEmailErr,"Enter a valid email so we can reply."); ok=false; } else clrErr(cEmail,cEmailErr);
+    if(sub.length<2){ setErr(cSubject,cSubjectErr,"Add a short subject."); ok=false; } else clrErr(cSubject,cSubjectErr);
+    if(msg.length<10){ setErr(cMessage,cMessageErr,"Tell us a little more (at least a sentence)."); ok=false; } else clrErr(cMessage,cMessageErr);
+    if(!ok) return;
+    cSubmit.disabled=true; cSubmit.textContent="Sending…";
+    sendContact(em,sub,msg).then(done).catch(function(){
+      cSubmit.disabled=false; cSubmit.textContent="Send message";
+      setErr(cMessage,cMessageErr,"Something went wrong — email us at info@kestrelinvest.xyz.");
+    });
+  });
+
+  // early-access modal (shared)
+  var EA_ENDPOINT = "https://formsubmit.co/ajax/info@kestrelinvest.xyz";
+  var overlay=$("eaOverlay"), formView=$("eaFormView"), doneView=$("eaDoneView");
+  var eaForm=$("eaForm"), eaWallet=$("eaWallet"), eaEmail=$("eaEmail"), eaWErr=$("eaWalletErr"), eaEErr=$("eaEmailErr"), eaSubmit=$("eaSubmit");
+  var lastFocus=null;
+  function isSolAddress(a){
+    if(!/^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(a)) return false;
+    var AL="123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz", bytes=[0], i, j;
+    for(i=0;i<a.length;i++){ var v=AL.indexOf(a.charAt(i)); if(v<0) return false; var carry=v;
+      for(j=0;j<bytes.length;j++){ carry+=bytes[j]*58; bytes[j]=carry&0xff; carry>>=8; }
+      while(carry){ bytes.push(carry&0xff); carry>>=8; } }
+    for(i=0;i<a.length && a.charAt(i)==='1';i++) bytes.push(0);
+    return bytes.length===32;
+  }
+  function eSetErr(inp,e,m){ inp.closest(".ea-field").classList.add("bad"); e.textContent=m; }
+  function eClrErr(inp,e){ inp.closest(".ea-field").classList.remove("bad"); e.textContent=""; }
+  eaWallet.addEventListener("input", function(){ eClrErr(eaWallet,eaWErr); });
+  eaEmail.addEventListener("input", function(){ eClrErr(eaEmail,eaEErr); });
+  function openEA(){ closeNav(); lastFocus=document.activeElement; formView.hidden=false; doneView.hidden=true; overlay.hidden=false; document.body.classList.add("ea-lock"); setTimeout(function(){ eaWallet.focus(); },40); }
+  function closeEA(){ overlay.hidden=true; document.body.classList.remove("ea-lock"); if(lastFocus&&lastFocus.focus) lastFocus.focus(); }
+  Array.prototype.forEach.call(document.querySelectorAll(".js-ea"), function(b){ b.addEventListener("click", openEA); });
+  $("eaClose").addEventListener("click", closeEA);
+  $("eaDoneClose").addEventListener("click", closeEA);
+  overlay.addEventListener("click", function(e){ if(e.target===overlay) closeEA(); });
+  document.addEventListener("keydown", function(e){ if(e.key==="Escape" && !overlay.hidden) closeEA(); });
+  eaForm.addEventListener("submit", function(e){
+    e.preventDefault();
+    var w=eaWallet.value.trim(), em=eaEmail.value.trim(), ok=true;
+    if(!isSolAddress(w)){ eSetErr(eaWallet,eaWErr,"Enter a valid Solana wallet address."); ok=false; } else eClrErr(eaWallet,eaWErr);
+    if(!emailRe.test(em)){ eSetErr(eaEmail,eaEErr,"Enter a valid email address."); ok=false; } else eClrErr(eaEmail,eaEErr);
+    if(!ok) return;
+    eaSubmit.disabled=true; eaSubmit.textContent="Submitting…";
+    try{ localStorage.setItem("kestrel_ea", JSON.stringify({wallet:w,email:em})); }catch(_){}
+    var p = EA_ENDPOINT ? fetch(EA_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify({wallet:w,email:em,source:"kestrelinvest.xyz/contact"})}).then(function(r){ if(!r.ok) throw new Error("x"); }) : Promise.resolve();
+    p.then(function(){ formView.hidden=true; doneView.hidden=false; setTimeout(function(){ $("eaDoneClose").focus(); },40); })
+     .catch(function(){ eaSubmit.disabled=false; eaSubmit.textContent="Request early access"; eSetErr(eaEmail,eaEErr,"Something went wrong — please try again."); });
+  });
+})();
+</script>
+
+<script src="elevate.js" defer></script>
+
+<script>
+(function(){
+  var UNITS={"ANSEM": 11971.5202, "KESTREL": 61913768.7853, "FARTCOIN": 22174.9285, "fone": 193974.5167, "PINK": 3902070.7713}, MINTS={"ANSEM": "9cRCn9rGT8V2imeM2BaKs13yhMEais3ruM3rPvTGpump", "KESTREL": "G9ALRz5jtq6wG7dijjsb1TvkGatwPNcnhbAGECVQpump", "FARTCOIN": "9BB6NFEcjBCtnNLFko2FqVQBq8HHM13kCyYcdQbgpump", "fone": "CTPoyCwkjMvoJwU4xvZZqoD8tiYk6yDchySiN5gGpump", "PINK": "AVBN6kXdaw27ySuvMevKYzNTL8d39b7sGQFDCmsvpump"};
+  var ids=Object.values(MINTS).join(",");
+  fetch("https://lite-api.jup.ag/price/v3?ids="+ids)
+    .then(function(r){if(!r.ok)throw 0;return r.json()}).catch(function(){return {}})
+    .then(function(px){
+      var missing=Object.values(MINTS).filter(function(m){var r=px[m];return !(r&&(r.usdPrice||r.price)>0)});
+      if(!missing.length)return px;
+      return fetch("https://api.dexscreener.com/tokens/v1/solana/"+missing.join(",")).then(function(r){return r.json()}).then(function(arr){
+        (arr||[]).forEach(function(p){var m=p.baseToken&&p.baseToken.address;if(m&&!px[m]&&Number(p.priceUsd)>0)px[m]={usdPrice:Number(p.priceUsd)}});return px}).catch(function(){return px});
+    })
+    .then(function(px){
+      var nav=0,ok=true;
+      for(var t in UNITS){
+        var row=px[MINTS[t]];var p=row&&(row.usdPrice||row.price);
+        if(!(p>0)){ok=false;continue;}
+        p=Number(p);var val=UNITS[t]*p;nav+=val;
+        var el=document.querySelector('.eg-row[data-t="'+t+'"]');
+        if(el){el.querySelector("[data-px]").textContent=p<0.001?"$"+p.toFixed(Math.max(0,2-Math.floor(Math.log10(p)))):"$"+p.toLocaleString(undefined,{maximumSignificantDigits:4});
+        el.querySelector("[data-val]").textContent="$"+val.toLocaleString(undefined,{maximumFractionDigits:0});}
+      }
+      if(!ok)return;
+      for(var t2 in UNITS){var el2=document.querySelector('.eg-row[data-t="'+t2+'"]');var row2=px[MINTS[t2]];var p2=Number(row2&&(row2.usdPrice||row2.price));if(el2&&p2>0)el2.querySelector("[data-w]").textContent=(UNITS[t2]*p2/nav*100).toFixed(1)+"%";}
+      var ret=(nav/10000-1)*100;
+      document.getElementById("egNav").textContent="$"+nav.toLocaleString(undefined,{maximumFractionDigits:0});
+      var re=document.getElementById("egRet");
+      re.textContent=(ret>=0?"+":"")+ret.toFixed(2)+"% since inception";
+      re.className="eg-ret "+(ret>=0?"up":"down");
+    }).catch(function(){});
+})();
+</script>
+</body>
+</html>
