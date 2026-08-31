@@ -182,6 +182,13 @@
   .vn-ghost{border:1px solid var(--vane);color:var(--vane-ink)!important;background:transparent}
   .vn-ghost:hover{background:var(--vane-glow);color:var(--vane-ink)!important;box-shadow:none}
   .vn-status{margin:22px 0 0;font-size:13.5px;color:var(--muted);display:flex;gap:10px;align-items:flex-start;max-width:62ch;line-height:1.5}
+  .vn-token{margin:16px 0 0;display:inline-flex;align-items:center;gap:0;border:1px solid color-mix(in srgb,var(--accent) 40%,var(--card-line));border-radius:12px;overflow:hidden;background:var(--surface)}
+  .vn-token a.tk{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;text-decoration:none;color:var(--accent-ink);font-weight:750;font-size:14px;letter-spacing:.02em;background:color-mix(in srgb,var(--accent) 10%,transparent)}
+  .vn-token a.tk i{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--glow);animation:vnpulse 1.8s infinite}
+  .vn-token .ca{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-left:1px solid var(--card-line);font-family:"JetBrains Mono",ui-monospace,monospace;font-size:12px;color:var(--muted)}
+  .vn-token button{border:0;background:transparent;color:var(--accent-ink);font:600 11px ui-monospace,monospace;letter-spacing:.08em;cursor:pointer;padding:4px 6px;border-radius:6px}
+  .vn-token button:hover{background:color-mix(in srgb,var(--accent) 12%,transparent)}
+  @media(max-width:680px){.vn-token{flex-wrap:wrap}.vn-token .ca{border-left:0;border-top:1px solid var(--card-line);width:100%}}
   .vn-pill{flex:none;font:600 10.5px/1 ui-monospace,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--vane-ink);border:1px solid color-mix(in srgb,var(--vane) 60%,transparent);border-radius:999px;padding:6px 9px;margin-top:1px;background:color-mix(in srgb,var(--vane) 8%,transparent)}
 
   /* lockup */
@@ -378,6 +385,7 @@
       <a class="btn vn-ghost" href="https://github.com/KestrelInvest/vane" target="_blank" rel="noopener">View the code</a>
     </div>
     <p class="vn-status"><span class="vn-pill">In development</span> Program written and under test. External review of every invariant below precedes any mainnet funds; the pilot runs under per-vault caps.</p>
+    <div class="vn-token"><a class="tk" href="https://pump.fun/coin/Axho6eDrFCy7q6fUqBUgfwA9TMxrWrTUt668jhyypump" target="_blank" rel="noopener"><i></i>$VANE is live</a><span class="ca" id="vnCa" title="Axho6eDrFCy7q6fUqBUgfwA9TMxrWrTUt668jhyypump">Axho6eDr&hellip;jhyypump<button type="button" id="vnCopy" aria-label="Copy contract address">COPY</button></span></div>
   </header>
 
   <!-- ENGINE DIAGRAM -->
@@ -651,6 +659,13 @@
   function cycle(){ timer=setInterval(function(){ if(!pinned) show(cur%8+1); }, 2600); }
   pips.concat(items).forEach(function(el){ el.addEventListener("click", function(){ pinned=true; show(+el.getAttribute("data-check")); }); el.addEventListener("mouseenter", function(){ show(+el.getAttribute("data-check")); }); });
   show(1); if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches) cycle();
+
+  // $VANE contract-address copy
+  var vnCopy=$("vnCopy");
+  if(vnCopy){ vnCopy.addEventListener("click", function(){
+    var ca="Axho6eDrFCy7q6fUqBUgfwA9TMxrWrTUt668jhyypump";
+    (navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(ca):Promise.reject()).then(function(){ vnCopy.textContent="COPIED"; setTimeout(function(){ vnCopy.textContent="COPY"; },1400); }).catch(function(){ window.prompt("Contract address:", ca); });
+  }); }
 
   // early-access modal (shared)
   var EA_ENDPOINT = "https://formsubmit.co/ajax/info@kestrelinvest.xyz";
