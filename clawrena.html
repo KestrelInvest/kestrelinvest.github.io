@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kestrel · The AnsemHack Clawrena</title>
+<meta name="description" content="Kestrel is competing in The AnsemHack Clawrena — 30 days of agentic building on Solana. We're shipping VANE, our Vault Autonomy Engine, on-chain: published weights, drift bands, every decision receipted.">
+<link rel="canonical" href="https://kestrelinvest.xyz/clawrena.html">
+<meta name="theme-color" content="#0e9f6e" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#04140d" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kestrel">
+<meta property="og:title" content="Kestrel · The AnsemHack Clawrena">
+<meta property="og:description" content="Kestrel is competing in The AnsemHack Clawrena — 30 days of agentic building on Solana. We're shipping VANE on-chain: published weights, drift bands, every decision receipted.">
+<meta property="og:url" content="https://kestrelinvest.xyz/clawrena.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kestrel · The AnsemHack Clawrena">
+<meta name="twitter:description" content="Kestrel is competing in The AnsemHack Clawrena — 30 days of agentic building on Solana. We're shipping VANE on-chain: published weights, drift bands, every decision receipted.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230e9f6e'/%3E%3Cg fill='%23eafff4'%3E%3Cpath d='M47 52 C 37 40 27 31 13 26 C 20 40 30 51 43 57 Z'/%3E%3Cpath d='M45 55 C 42 49 43 42 49 38 C 47 35 46 31 49 28 C 52 31 53 35 52 39 C 58 43 60 51 56 60 L 68 82 L 57 73 L 54 88 L 50 71 C 47 66 46 61 45 55 Z'/%3E%3Cpath d='M51 40 C 63 27 76 19 93 15 C 80 28 67 40 55 47 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root {
+    --bg:#f5f8f6; --surface:#ffffff; --surface-2:#f0f5f1;
+    --ink:#0e211a; --muted:#5a6f64; --line:rgba(14,33,26,.10); --card-line:rgba(14,33,26,.09);
+    --accent:#0e9f6e; --accent-ink:#0a7d56; --glow:rgba(14,159,110,.14); --market:#d2604f;
+    --arena:#a87d20; --arena-hot:#c99a3a; --arena-glow:rgba(168,125,32,.13); --arena-line:rgba(168,125,32,.32);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#070c0a; --surface:#0f1713; --surface-2:#131d17; --ink:#e9f2ec; --muted:#83988c;
+      --line:rgba(255,255,255,.08); --card-line:rgba(255,255,255,.07);
+      --accent:#2ee6a0; --accent-ink:#68f0bd; --glow:rgba(46,230,160,.16); --market:#f2836e;
+      --arena:#e6b93e; --arena-hot:#ffd27a; --arena-glow:rgba(230,185,62,.14); --arena-line:rgba(230,185,62,.4); }
+  }
+  :root[data-theme="light"] { --bg:#f5f8f6; --surface:#ffffff; --surface-2:#f0f5f1; --ink:#0e211a; --muted:#5a6f64; --line:rgba(14,33,26,.10); --card-line:rgba(14,33,26,.09); --accent:#0e9f6e; --accent-ink:#0a7d56; --glow:rgba(14,159,110,.14); --market:#d2604f; --arena:#a87d20; --arena-hot:#c99a3a; --arena-glow:rgba(168,125,32,.13); --arena-line:rgba(168,125,32,.32); }
+  :root[data-theme="dark"] { --bg:#070c0a; --surface:#0f1713; --surface-2:#131d17; --ink:#e9f2ec; --muted:#83988c; --line:rgba(255,255,255,.08); --card-line:rgba(255,255,255,.07); --accent:#2ee6a0; --accent-ink:#68f0bd; --glow:rgba(46,230,160,.16); --market:#f2836e; --arena:#e6b93e; --arena-hot:#ffd27a; --arena-glow:rgba(230,185,62,.14); --arena-line:rgba(230,185,62,.4); }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; color: var(--ink); position: relative;
+    font: 15.5px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased;
+    background: radial-gradient(120% 55% at 50% -12%, var(--arena-glow), transparent 52%), var(--bg); }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 30px; }
+  a { color: inherit; }
+
+  nav { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(12px); background: color-mix(in srgb, var(--bg) 78%, transparent); border-bottom: 1px solid var(--line); }
+  .nav-in { max-width: 1180px; margin: 0 auto; padding: 14px 30px; display: flex; align-items: center; gap: 14px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; }
+  .brand .logo { width: 26px; height: 26px; color: var(--accent); }
+  .brand b { font-size: 16px; letter-spacing: 3px; font-weight: 650; }
+  .brand .tm { font-size: 8px; font-weight: 600; letter-spacing: 0; vertical-align: super; margin-left: -1px; color: var(--muted); }
+  .nav-links { margin-left: auto; display: flex; align-items: center; gap: 22px; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; font-family: inherit; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-toggle { display: none; margin-left: auto; width: 40px; height: 40px; border: 1px solid var(--card-line); border-radius: 10px; background: var(--surface); cursor: pointer; padding: 0; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
+  .nav-toggle span { display: block; width: 18px; height: 2px; border-radius: 2px; background: var(--ink); transition: transform .2s ease, opacity .2s ease; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .btn { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--accent); color: var(--accent-ink); background: transparent; padding: 9px 17px; border-radius: 10px; font-size: 14px; font-weight: 600; font-family: inherit; text-decoration: none; cursor: pointer; transition: all .16s ease; }
+  .btn:hover { background: var(--accent); color: #04140d; box-shadow: 0 8px 24px var(--glow); }
+  .btn.solid { background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 90%, #fff), var(--accent)); color: #04140d; border-color: transparent; font-weight: 650; letter-spacing: -.004em; box-shadow: 0 1px 1px rgba(0,0,0,.10), 0 8px 20px -10px var(--glow); }
+  .btn.solid:hover { transform: translateY(-1px); background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 96%, #fff), var(--accent)); box-shadow: 0 2px 4px rgba(0,0,0,.12), 0 14px 30px -10px var(--glow); }
+  .btn.solid:active { transform: translateY(0); }
+  .btn:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 2px; }
+  .eyebrow { font-family: ui-monospace, monospace; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--accent-ink); margin: 0 0 16px; }
+
+  /* early-access modal (shared) */
+  .ea-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-ink); }
+  .ea-eyebrow i { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--glow); }
+  .ea-overlay { position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center; padding: 20px; background: color-mix(in srgb, #04140d 55%, transparent); backdrop-filter: blur(6px); animation: eaFade .2s ease; }
+  .ea-overlay[hidden] { display: none; }
+  @keyframes eaFade { from { opacity: 0; } to { opacity: 1; } }
+  .ea-modal { position: relative; width: 100%; max-width: 440px; background: var(--surface); border: 1px solid var(--card-line); border-radius: 20px; padding: 32px 30px 28px; box-shadow: 0 50px 100px -30px rgba(0,0,0,.5); animation: eaRise .25s cubic-bezier(.2,.7,.2,1); max-height: calc(100dvh - 40px); overflow-y: auto; }
+  @keyframes eaRise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  .ea-close { position: absolute; top: 14px; right: 14px; width: 32px; height: 32px; border: none; border-radius: 9px; background: var(--surface-2); color: var(--muted); font-size: 13px; cursor: pointer; }
+  .ea-close:hover { color: var(--ink); }
+  .ea-modal h2 { margin: 14px 0 8px; font-size: 23px; font-weight: 750; letter-spacing: -.02em; }
+  .ea-sub { margin: 0 0 20px; color: var(--muted); font-size: 14px; line-height: 1.5; }
+  .ea-field { display: block; margin-bottom: 14px; }
+  .ea-lab { display: block; font-size: 12.5px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+  .ea-field input { width: 100%; padding: 12px 13px; border: 1px solid var(--card-line); border-radius: 11px; background: var(--bg); color: var(--ink); font: inherit; font-size: 15px; }
+  #eaWallet { font-family: ui-monospace, monospace; font-size: 13.5px; }
+  .ea-field input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--glow); }
+  .ea-field.bad input { border-color: var(--market); }
+  .ea-err { display: block; min-height: 15px; margin-top: 5px; font-size: 12px; color: var(--market); }
+  .ea-submit { width: 100%; justify-content: center; padding: 13px; margin-top: 4px; font-size: 15px; }
+  .ea-submit[disabled] { opacity: .6; cursor: default; }
+  .ea-trust { display: flex; align-items: flex-start; gap: 8px; margin: 16px 0 0; font-size: 11.5px; line-height: 1.5; color: var(--muted); }
+  .ea-trust svg { flex: none; margin-top: 1px; color: var(--accent-ink); }
+  .ea-done { text-align: center; }
+  .ea-check { width: 58px; height: 58px; margin: 4px auto 4px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #04140d; background: var(--accent); box-shadow: 0 0 0 8px var(--glow); }
+  .ea-done .btn { margin-top: 18px; }
+  body.ea-lock { overflow: hidden; }
+
+  footer { margin-top: 44px; border-top: 1px solid var(--line); padding: 28px 0 52px; display: flex; flex-direction: column; gap: 20px; }
+  footer .cap { color: var(--muted); font-size: 11.5px; max-width: 56ch; }
+  .foot-links { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
+  .foot-links a { color: var(--muted); text-decoration: none; font-size: 14px; }
+  .foot-links a:hover { color: var(--ink); }
+  .foot-contact { margin-left: auto; display: inline-flex; align-items: center; gap: 12px; }
+  .foot-x { display: inline-flex; width: 34px; height: 34px; align-items: center; justify-content: center; border: 1px solid var(--card-line); border-radius: 9px; color: var(--ink); transition: border-color .15s ease, background .15s ease; }
+  .foot-x:hover { border-color: var(--accent); }
+  .foot-x svg { width: 15px; height: 15px; }
+  .foot-bottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: center; }
+  .foot-meta { display: inline-flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .foot-dom { font-family: ui-monospace, monospace; font-size: 12px; letter-spacing: .04em; color: var(--accent-ink); text-decoration: none; font-weight: 600; }
+  .bpbadge { display: inline-flex; align-items: center; gap: 7px; font-family: ui-monospace, monospace; font-size: 11.5px; letter-spacing: .04em; color: var(--muted); }
+  .bpbadge .bp { width: 15px; height: 15px; color: var(--accent-ink); flex: none; }
+
+  @media (max-width: 680px) {
+    .wrap { padding: 0 18px; }
+    .nav-in { padding: 12px 18px; gap: 10px; position: relative; }
+    .nav-toggle { display: flex; }
+    .nav-links { position: absolute; top: calc(100% + 1px); left: 0; right: 0; margin: 0; flex-direction: column; align-items: stretch; gap: 0; background: var(--surface); border-bottom: 1px solid var(--line); box-shadow: 0 20px 40px -24px var(--glow); padding: 8px 18px 16px; display: none; }
+    .nav-links.open { display: flex; }
+    .nav-links a { padding: 13px 4px; font-size: 15px; border-bottom: 1px solid var(--card-line); }
+    .nav-links .btn { margin-top: 12px; justify-content: center; padding: 12px; }
+    .ea-overlay { padding: 12px; align-items: flex-end; }
+    .ea-modal { padding: 26px 20px 22px; border-radius: 18px 18px 16px 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .cw-dot { animation: none; } .cw-receipt { transform: none !important; } }
+
+  /* ===== CLAWRENA ===== */
+  .cw-eyebrow{color:var(--arena)!important;display:flex;align-items:center;gap:8px}
+  .cw-dot{width:8px;height:8px;border-radius:50%;background:var(--arena);display:inline-block;box-shadow:0 0 12px var(--arena);animation:cwpulse 1.6s infinite}
+  @keyframes cwpulse{0%,100%{opacity:1}50%{opacity:.35}}
+  .cw-hot{background:linear-gradient(100deg,var(--arena-hot),var(--arena));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+  .cw-hero{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;padding:64px 0 10px}
+  .cw-hero h1{margin:0;font-size:clamp(36px,4.6vw,58px);line-height:1.02;font-weight:800;letter-spacing:-.035em}
+  .cw-hero .lead{margin:20px 0 0;font-size:17.5px;color:var(--muted);max-width:56ch}
+  .cw-hero .lead strong{color:var(--ink)}
+  .cw-cta{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
+  .cw-ghost{border:1px solid var(--arena);color:var(--arena)!important;background:transparent}
+  .cw-ghost:hover{background:var(--arena-glow);box-shadow:none;color:var(--arena)}
+  .cw-hosts{margin-top:22px;font-family:ui-monospace,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);line-height:2}
+  .cw-hosts b{color:var(--ink);font-weight:600}
+
+  /* hero receipt artifact */
+  .cw-stage{position:relative;min-height:400px}
+  .cw-falcon{position:absolute;right:-30px;top:-34px;width:340px;height:340px;opacity:.10;filter:saturate(.4)}
+  .cw-receipt{position:relative;margin:0 0 0 auto;max-width:390px;background:var(--surface);border:1px solid var(--card-line);border-radius:14px;padding:0;transform:rotate(-1.6deg);box-shadow:0 34px 80px -34px rgba(0,0,0,.45),0 0 60px var(--arena-glow);font-family:ui-monospace,monospace}
+  .rc-head{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px dashed var(--card-line);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .rc-head .rc-tag{color:var(--arena);border:1px solid var(--arena-line);border-radius:999px;padding:3px 9px;font-size:9.5px;letter-spacing:.14em}
+  .rc-body{padding:14px 18px 12px;display:flex;flex-direction:column;gap:9px}
+  .rc-row{display:flex;justify-content:space-between;gap:14px;font-size:12.5px}
+  .rc-row .k{color:var(--muted);letter-spacing:.08em;font-size:10.5px;text-transform:uppercase;padding-top:1px;flex:none}
+  .rc-row .v{text-align:right;color:var(--ink);font-weight:500}
+  .rc-row .v.gain{color:var(--accent-ink)}
+  .rc-row .v.gold{color:var(--arena)}
+  .rc-sig{border-top:1px dashed var(--card-line);margin-top:4px;padding-top:11px;display:flex;justify-content:space-between;align-items:center;font-size:11.5px}
+  .rc-sig .tx{color:var(--muted)}
+  .rc-sig .ok{display:inline-flex;align-items:center;gap:6px;color:var(--accent-ink);font-weight:600;letter-spacing:.06em;font-size:10.5px}
+  .rc-sig .ok i{width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block;box-shadow:0 0 8px var(--accent)}
+  .cw-receipt figcaption{padding:10px 18px 13px;border-top:1px dashed var(--card-line);font-size:10.5px;color:var(--muted);font-family:ui-sans-serif,system-ui,sans-serif;letter-spacing:.01em}
+
+  .cw-stats{margin:52px 0 0;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .cw-stats>div{padding:22px 10px;text-align:center;border-left:1px solid var(--line)}
+  .cw-stats>div:first-child{border-left:0}
+  .cw-stats b{display:block;font-size:clamp(26px,3vw,38px);font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+  .cw-stats b em{font-style:normal;color:var(--arena)}
+  .cw-stats span{display:block;margin-top:4px;font-family:ui-monospace,monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+
+  .cw-count{margin:26px 0 0;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;padding:16px 22px;border:1px solid var(--arena-line);border-radius:14px;background:color-mix(in srgb,var(--arena) 5%,var(--surface))}
+  .cw-count .cl{font-family:ui-monospace,monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--arena);font-weight:600}
+  .cw-count b{font-family:ui-monospace,monospace;font-size:clamp(18px,2.4vw,26px);font-weight:600;letter-spacing:.04em;font-variant-numeric:tabular-nums}
+  .cw-count b span{color:var(--muted);font-size:.62em;letter-spacing:.12em;margin:0 10px 0 3px}
+
+  .cw-quote{margin:76px 0;text-align:center}
+  .cw-quote .rule{width:110px;height:2px;margin:0 auto;background:linear-gradient(90deg,transparent,var(--arena),transparent)}
+  .cw-quote p{margin:28px auto;max-width:21ch;font-size:clamp(26px,3.6vw,40px);line-height:1.22;font-weight:750;letter-spacing:-.025em}
+  .cw-quote p em{font-style:normal;background:linear-gradient(100deg,var(--arena-hot),var(--arena));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+  .cw-entry{margin:8px 0 0;padding:26px 28px;background:var(--surface);border:1px solid var(--card-line);border-radius:20px;box-shadow:0 24px 60px -40px var(--arena-glow)}
+  .cw-egrid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .cw-cell .cl{font-family:ui-monospace,monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:block}
+  .cw-cell .cv{display:block;font-size:16px;font-weight:700;margin-top:5px;letter-spacing:-.01em}
+  .cw-cell .cv small{display:block;font-weight:500;font-size:12.5px;color:var(--muted);margin-top:2px}
+  .cw-cell .cv .lv{color:var(--arena)}
+  @media(max-width:820px){.cw-egrid{grid-template-columns:1fr 1fr;gap:18px}}
+
+  .cw-ship{margin:72px 0}
+  .cw-ship h2,.cw-run h2,.cw-board h2{font-size:30px;margin:0 0 8px;letter-spacing:-.025em;font-weight:800}
+  .cw-ship .sub,.cw-run .sub,.cw-board .sub{margin:0 0 24px;color:var(--muted);max-width:64ch}
+  .cw-feats{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  @media(max-width:820px){.cw-feats{grid-template-columns:1fr}}
+  .cfeat{background:var(--surface);border:1px solid var(--card-line);border-radius:18px;padding:24px;transition:border-color .15s ease,transform .15s ease,box-shadow .15s ease}
+  .cfeat:hover{border-color:color-mix(in srgb,var(--arena) 45%,var(--card-line));transform:translateY(-2px);box-shadow:0 18px 44px -28px var(--arena-glow)}
+  .cfeat .ic{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:var(--arena-glow);color:var(--arena)}
+  .cfeat .ic svg{width:20px;height:20px}
+  .cfeat h3{margin:13px 0 8px;font-size:17.5px}
+  .cfeat p{color:var(--muted);font-size:14px;line-height:1.58;margin:0}
+  .cfeat p b{color:var(--ink)}
+
+  .cw-board{margin:72px 0}
+  .cw-awards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  @media(max-width:960px){.cw-awards{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.cw-awards{grid-template-columns:1fr}}
+  .caw{position:relative;background:var(--surface);border:1px solid var(--card-line);border-radius:16px;padding:20px 18px 18px;display:flex;flex-direction:column;gap:6px}
+  .caw.mine{border-color:var(--arena-line);box-shadow:0 0 40px var(--arena-glow)}
+  .caw .tag{position:absolute;top:14px;right:14px;font-family:ui-monospace,monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;padding:4px 8px;border-radius:999px;border:1px solid var(--arena-line);color:var(--arena)}
+  .caw.dim .tag{border-color:var(--card-line);color:var(--muted)}
+  .caw h3{margin:0;font-size:14.5px;padding-right:64px}
+  .caw .amt{font-size:24px;font-weight:800;letter-spacing:-.025em;font-variant-numeric:tabular-nums}
+  .caw.mine .amt{color:var(--arena)}
+  .caw .amt small{display:block;font-size:11.5px;font-weight:500;color:var(--muted);letter-spacing:0;margin-top:2px}
+  .caw p{margin:2px 0 0;font-size:12.5px;color:var(--muted);line-height:1.5}
+  .caw.dim{opacity:.62}
+  .cw-boardnote{margin-top:14px;font-size:11.5px;color:var(--muted);max-width:72ch}
+
+  .cw-run{margin:72px 0 8px}
+  .cw-steps{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .cw-steps:before{content:"";position:absolute;left:2%;right:2%;top:29px;height:1px;background:linear-gradient(90deg,transparent,var(--arena-line) 12%,var(--arena-line) 88%,transparent)}
+  @media(max-width:820px){.cw-steps{grid-template-columns:1fr 1fr}.cw-steps:before{display:none}}
+  @media(max-width:520px){.cw-steps{grid-template-columns:1fr}}
+  .cstep{position:relative;background:var(--surface);border:1px solid var(--card-line);border-radius:16px;padding:18px 18px 16px}
+  .cstep.hot{border-color:var(--arena-line);box-shadow:0 0 34px var(--arena-glow)}
+  .cstep .cd{font-family:ui-monospace,monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--arena);font-weight:600}
+  .cstep h3{margin:8px 0 6px;font-size:15.5px}
+  .cstep p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}
+  .cw-note{margin-top:20px;font-size:12.5px;color:var(--muted);max-width:640px}
+  .cw-note a{color:var(--arena)}
+
+  @media(max-width:900px){
+    .cw-hero{grid-template-columns:1fr;gap:34px;padding-top:44px}
+    .cw-stage{min-height:0}
+    .cw-falcon{display:none}
+    .cw-receipt{margin:0;transform:rotate(-1deg)}
+    .cw-stats{grid-template-columns:1fr 1fr}
+    .cw-stats>div:nth-child(3){border-left:0}
+    .cw-stats>div:nth-child(1),.cw-stats>div:nth-child(2){border-bottom:1px solid var(--line)}
+  }
+</style>
+<link rel="stylesheet" href="elevate.css">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="kxNear" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9dffdd"/><stop offset=".5" stop-color="#2ee6a0"/><stop offset="1" stop-color="#0e9f6e"/></linearGradient>
+    <linearGradient id="kxFar" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#15b884"/><stop offset="1" stop-color="#0a7047"/></linearGradient>
+    <linearGradient id="kxBod" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c7ffee"/><stop offset="1" stop-color="#12b07d"/></linearGradient>
+  </defs>
+  <symbol id="kestrel" viewBox="0 0 100 100">
+    <path fill="url(#kxFar)" d="M47 52 C 37 40 27 31 13 26 C 20 40 30 51 43 57 Z"/>
+    <path fill="url(#kxBod)" d="M45 55 C 42 49 43 42 49 38 C 47 35 46 31 49 28 C 52 31 53 35 52 39 C 58 43 60 51 56 60 L 68 82 L 57 73 L 54 88 L 50 71 C 47 66 46 61 45 55 Z"/>
+    <path fill="url(#kxNear)" d="M51 40 C 63 27 76 19 93 15 C 80 28 67 40 55 47 Z"/>
+    <path fill="#2ee6a0" opacity=".75" d="M72 25 C 80 20 86 18 92 16 C 85 23 77 29 69 34 Z"/>
+    <circle cx="50.5" cy="31" r="1.8" fill="#0a1712"/>
+  </symbol>
+  <symbol id="bp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8.5 7.2 a3.5 3.5 0 0 1 7 0"/><rect x="4.2" y="7.2" width="15.6" height="12.8" rx="4.4"/><rect x="8.4" y="12.4" width="7.2" height="7.6" rx="2"/><line x1="10.4" y1="15.4" x2="13.6" y2="15.4"/>
+  </symbol>
+</svg>
+
+<nav>
+  <div class="nav-in">
+    <a class="brand" href="index.html"><svg class="logo"><use href="#kestrel"/></svg><b>KESTREL<span class="tm">&#8482;</span></b></a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <div class="nav-links" id="navLinks">
+      <a href="portfolios.html">Portfolios</a>
+      <a href="prospectus.html">Prospectus</a>
+      <a href="edge.html">Edge</a>
+      <a href="vane.html">VANE</a>
+      <a href="x402.html">x402</a>
+      <a href="https://pump.fun/coin/G9ALRz5jtq6wG7dijjsb1TvkGatwPNcnhbAGECVQpump" id="tokenLink" target="_blank" rel="noopener">$Kestrel</a>
+      <button class="btn solid js-ea" type="button">Request early access</button>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <header class="cw-hero">
+    <div>
+      <p class="eyebrow cw-eyebrow"><i class="cw-dot"></i>Kestrel &times; The AnsemHack Clawrena</p>
+      <h1>Thirty days <span class="cw-hot">in the arena.</span></h1>
+      <p class="lead">Kestrel has entered <strong>The AnsemHack Clawrena</strong> — a 30-day, build-in-public arena for agentic builders on Solana. We're taking <strong>VANE</strong>, our Vault Autonomy Engine, on-chain in front of the judges: published weights, drift bands, hard caps — and a receipt for every decision it makes.</p>
+      <div class="cw-cta">
+        <a class="btn cw-ghost" href="https://clawpump.tech/ansemhack" target="_blank" rel="noopener">The hackathon &#8599;</a>
+        <a class="btn cw-ghost" href="https://github.com/KestrelInvest/Clawtech-Hackathon" target="_blank" rel="noopener">Build repo &#8599;</a>
+        <a class="btn" href="vane.html">Meet VANE</a>
+      </div>
+      <p class="cw-hosts">Hosted by <b>Ansem</b> · <b>ClawPump</b> · <b>pump.fun</b> · <b>UsePod</b> · <b>EasyA</b> · <b>Solana Foundation</b></p>
+    </div>
+    <div class="cw-stage">
+      <svg class="cw-falcon" aria-hidden="true"><use href="#kestrel"/></svg>
+      <figure class="cw-receipt">
+        <div class="rc-head"><span>VANE &middot; Trade receipt</span><span class="rc-tag">Sample</span></div>
+        <div class="rc-body">
+          <div class="rc-row"><span class="k">Trigger</span><span class="v">Drift 3.21&thinsp;pp &gt; 3.00 band</span></div>
+          <div class="rc-row"><span class="k">Action</span><span class="v gold">Rebalance &middot; trim into strength</span></div>
+          <div class="rc-row"><span class="k">Sell</span><span class="v">HOOD &rarr; back to 10.0% target</span></div>
+          <div class="rc-row"><span class="k">Buy</span><span class="v">QQQ +0.38% &middot; GLD +0.11%</span></div>
+          <div class="rc-row"><span class="k">Checks</span><span class="v gain">8 of 8 passed &middot; caps held</span></div>
+          <div class="rc-row"><span class="k">Cost</span><span class="v">$0.0041 inference &middot; $0.0002 fees</span></div>
+          <div class="rc-sig"><span class="tx">tx&nbsp;5xK9&hellip;fQ2m</span><span class="ok"><i></i>CONFIRMED</span></div>
+        </div>
+        <figcaption>Illustrative sample — live receipts publish here once VANE trades on-chain.</figcaption>
+      </figure>
+    </div>
+  </header>
+
+  <div class="cw-stats" role="list" aria-label="Hackathon at a glance">
+    <div role="listitem"><b><em>$345K</em></b><span>prize pool</span></div>
+    <div role="listitem"><b>4</b><span>awards</span></div>
+    <div role="listitem"><b>15</b><span>judges</span></div>
+    <div role="listitem"><b>30</b><span>days &middot; built in public</span></div>
+  </div>
+
+  <div class="cw-count" id="cwCount">
+    <span class="cl" id="cwLabel">Tokenize deadline &middot; Sep 19</span>
+    <b id="cwTime" aria-live="off">&mdash;</b>
+  </div>
+
+  <section class="cw-quote" aria-label="The thesis">
+    <div class="rule"></div>
+    <p>Everyone ships an agent that trades. We're shipping the agent <em>you'd let hold your money.</em></p>
+    <div class="rule"></div>
+  </section>
+
+  <section class="cw-entry" aria-label="The entry">
+    <div class="cw-egrid">
+      <div class="cw-cell"><span class="cl">Project</span><span class="cv">Kestrel<small>the agentic advisor</small></span></div>
+      <div class="cw-cell"><span class="cl">What we're shipping</span><span class="cv">VANE<small>Vault Autonomy Engine</small></span></div>
+      <div class="cw-cell"><span class="cl">Tracks</span><span class="cv"><span class="lv">ClawPump &times; pump.fun</span><small>+ Inference Markets &middot; + Overall</small></span></div>
+      <div class="cw-cell"><span class="cl">Status</span><span class="cv">Registered<small>Sep 1, 2026 &middot; building in public</small></span></div>
+    </div>
+  </section>
+
+  <section class="cw-ship">
+    <h2>What goes on-chain</h2>
+    <p class="sub">The same engine that runs Kestrel's tracked portfolios — competing where everyone can watch it work.</p>
+    <div class="cw-feats">
+      <div class="cfeat"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg></span><h3>Autonomy, on-chain</h3><p>Hourly marks, drift checks against <b>published bands</b>, rebalance and DCA orders executed non-custodially on Solana — with hard caps and a kill switch in front of every trade.</p></div>
+      <div class="cfeat"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h10a1 1 0 0 1 1 1v17l-3-2-3 2-3-2-3 2V4a1 1 0 0 1 1-1z"/><path d="M9 8h6M9 12h6"/></svg></span><h3>A receipt for every decision</h3><p>Every action recorded with its rationale and transaction signature. The agent argues from <b>evidence, in public</b> — no screenshots, no trust required.</p></div>
+      <div class="cfeat"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="13" rx="2.5"/><path d="M7.5 12.5l2.2-2.6 2 2.2 3-3.6 1.8 2"/><path d="M8 21h8"/></svg></span><h3>Metered inference</h3><p>VANE's decision layer buys its own compute on the inference market and reports <b>cost-per-decision</b> like any other portfolio expense.</p></div>
+      <div class="cfeat"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v4.5l3 2"/></svg></span><h3>Watched for thirty days</h3><p>No private submissions — judges watch the chain and the streams while we build. <b>Discipline is the spectacle.</b></p></div>
+    </div>
+  </section>
+
+  <section class="cw-board">
+    <h2>The board</h2>
+    <p class="sub">Four awards. One build competes for three of them — the ClawPump tracks stack, and every entry is automatically in for Overall.</p>
+    <div class="cw-awards">
+      <div class="caw mine"><span class="tag">Entered</span><h3>ClawPump &times; pump.fun</h3><span class="amt">$125K<small>in $ANSEM &middot; + $35K cash</small></span><p>The builder &amp; trader award — net-new tooling on the Hermes harness, realised performance, risk control.</p></div>
+      <div class="caw mine"><span class="tag">Automatic</span><h3>Overall Winner</h3><span class="amt">$62.5K<small>in $ANSEM</small></span><p>The best project in the Clawrena, picked by the full panel — product, traction, token design.</p></div>
+      <div class="caw mine"><span class="tag">Entered</span><h3>Inference Markets</h3><span class="amt">$37.5K<small>in $ANSEM &middot; + $10K compute</small></span><p>For builds where UsePod inference is load-bearing — like an agent that budgets its own compute.</p></div>
+      <div class="caw dim"><span class="tag">Not entered</span><h3>EasyA Kickstart</h3><span class="amt">$25K<small>in $ANSEM &middot; + $25K cash</small></span><p>A separate launch surface — it can't be combined with the ClawPump tracks, so we chose our lane.</p></div>
+    </div>
+    <p class="cw-boardnote">Figures are the organizers' published award totals; $ANSEM awards vest linearly over 3 months behind a 1-month cliff and are struck at announcement-day price.</p>
+  </section>
+
+  <section class="cw-run">
+    <h2>Run of show</h2>
+    <p class="sub">One deadline that matters, then ten days under the lights.</p>
+    <div class="cw-steps">
+      <div class="cstep hot"><span class="cd">Sep 1</span><h3>Entered</h3><p>Registered in the official Clawrena registry. The build starts now.</p></div>
+      <div class="cstep"><span class="cd">Sep 19</span><h3>Tokenize deadline</h3><p>Registration and tokenization both close. Untokenized teams are out.</p></div>
+      <div class="cstep"><span class="cd">Sep 20&#8211;30</span><h3>Judging</h3><p>On-chain history, live streams, finalist pitches in front of the full panel.</p></div>
+      <div class="cstep"><span class="cd">Oct 1</span><h3>Winners</h3><p>$345K across four awards — and the work keeps running either way.</p></div>
+    </div>
+    <p class="cw-note">Follow the run on <a href="https://x.com/KestrelInvest" target="_blank" rel="noopener">@KestrelInvest</a> — daily receipts once VANE is live on-chain. The Clawrena build is open source in the <a href="https://github.com/KestrelInvest/Clawtech-Hackathon" target="_blank" rel="noopener">build repo</a>.</p>
+  </section>
+
+  <footer>
+    <div class="foot-links">
+      <a href="whitepaper.html">Whitepaper</a>
+      <a href="prospectus.html">Prospectus</a>
+      <a href="portfolios.html">Portfolios</a>
+      <a href="edge.html">Edge</a>
+      <a href="vane.html">VANE</a>
+      <a href="x402.html">x402</a>
+      <a href="clawrena.html">Clawrena</a>
+      <a href="contact.html">Contact</a>
+      <span class="foot-contact">
+        <a class="foot-x" href="https://x.com/KestrelInvest" target="_blank" rel="noopener" aria-label="Kestrel on X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        <a class="foot-x" href="https://github.com/KestrelInvest" target="_blank" rel="noopener" aria-label="Kestrel on GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg></a>
+      </span>
+    </div>
+    <div class="foot-bottom">
+      <span class="cap">Hackathon participation, in development — not investment advice or an offer. Prize figures are the organizers' published totals.</span>
+      <span class="foot-meta"><a class="foot-dom" href="index.html">kestrelinvest.xyz</a><span class="bpbadge"><svg class="bp"><use href="#bp"/></svg>Powered by Backpack Securities</span></span>
+    </div>
+  </footer>
+</div>
+
+<div class="ea-overlay" id="eaOverlay" hidden>
+  <div class="ea-modal" role="dialog" aria-modal="true" aria-labelledby="eaTitle">
+    <button class="ea-close" id="eaClose" type="button" aria-label="Close">&#10005;</button>
+    <div class="ea-view" id="eaFormView">
+      <span class="ea-eyebrow"><i></i>Early access · Limited first cohort</span>
+      <h2 id="eaTitle">Request an invitation</h2>
+      <p class="ea-sub">We're onboarding a small first cohort. Reserve your place — every request is reviewed before access opens.</p>
+      <form id="eaForm" novalidate>
+        <label class="ea-field"><span class="ea-lab">Solana wallet address</span>
+          <input type="text" id="eaWallet" name="wallet" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="e.g. 7xKX&hellip;9dPq" />
+          <span class="ea-err" id="eaWalletErr" role="alert"></span></label>
+        <label class="ea-field"><span class="ea-lab">Email address</span>
+          <input type="email" id="eaEmail" name="email" autocomplete="email" placeholder="you@email.com" />
+          <span class="ea-err" id="eaEmailErr" role="alert"></span></label>
+        <button class="btn solid ea-submit" id="eaSubmit" type="submit">Request early access</button>
+        <p class="ea-trust"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span>Non-custodial. Your address only whitelists early access — Kestrel never takes custody or asks for your keys.</span></p>
+      </form>
+    </div>
+    <div class="ea-view ea-done" id="eaDoneView" hidden>
+      <div class="ea-check"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <h2>Request received</h2>
+      <p class="ea-sub">You're on the early-access list. We review every request personally and will email you the moment your cohort opens.</p>
+      <button class="btn solid" id="eaDoneClose" type="button">Done</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var $=function(id){ return document.getElementById(id); };
+  var emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  // nav
+  var navToggle=$("navToggle"), navLinks=$("navLinks");
+  function closeNav(){ navLinks.classList.remove("open"); navToggle.setAttribute("aria-expanded","false"); }
+  navToggle.addEventListener("click", function(){ var o=navLinks.classList.toggle("open"); navToggle.setAttribute("aria-expanded", o?"true":"false"); });
+  Array.prototype.forEach.call(navLinks.querySelectorAll("a"), function(a){ a.addEventListener("click", function(e){ if(a.getAttribute("href")==="#"){ e.preventDefault(); } closeNav(); }); });
+
+  // countdown — tokenize deadline, then winners
+  var cwLabel=$("cwLabel"), cwTime=$("cwTime");
+  var T_TOKENIZE=new Date("2026-09-19T23:59:59-04:00").getTime();
+  var T_WINNERS=new Date("2026-10-01T12:00:00-04:00").getTime();
+  function two(n){ return (n<10?"0":"")+n; }
+  function tick(){
+    var now=Date.now(), t, label;
+    if(now<T_TOKENIZE){ t=T_TOKENIZE-now; label="Tokenize deadline · Sep 19"; }
+    else if(now<T_WINNERS){ t=T_WINNERS-now; label="Judging live · winners Oct 1"; }
+    else { cwLabel.textContent="The Clawrena has concluded"; cwTime.textContent="Oct 1, 2026"; return; }
+    cwLabel.textContent=label;
+    var d=Math.floor(t/864e5), h=Math.floor(t%864e5/36e5), m=Math.floor(t%36e5/6e4), s=Math.floor(t%6e4/1e3);
+    cwTime.innerHTML=d+"<span>D</span>"+two(h)+"<span>H</span>"+two(m)+"<span>M</span>"+two(s)+"<span>S</span>";
+    setTimeout(tick, 1000);
+  }
+  tick();
+
+  // early-access modal (shared)
+  var EA_ENDPOINT = "https://formsubmit.co/ajax/info@kestrelinvest.xyz";
+  var overlay=$("eaOverlay"), formView=$("eaFormView"), doneView=$("eaDoneView");
+  var eaForm=$("eaForm"), eaWallet=$("eaWallet"), eaEmail=$("eaEmail"), eaWErr=$("eaWalletErr"), eaEErr=$("eaEmailErr"), eaSubmit=$("eaSubmit");
+  var lastFocus=null;
+  function isSolAddress(a){
+    if(!/^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(a)) return false;
+    var AL="123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz", bytes=[0], i, j;
+    for(i=0;i<a.length;i++){ var v=AL.indexOf(a.charAt(i)); if(v<0) return false; var carry=v;
+      for(j=0;j<bytes.length;j++){ carry+=bytes[j]*58; bytes[j]=carry&0xff; carry>>=8; }
+      while(carry){ bytes.push(carry&0xff); carry>>=8; } }
+    for(i=0;i<a.length && a.charAt(i)==='1';i++) bytes.push(0);
+    return bytes.length===32;
+  }
+  function eSetErr(inp,e,m){ inp.closest(".ea-field").classList.add("bad"); e.textContent=m; }
+  function eClrErr(inp,e){ inp.closest(".ea-field").classList.remove("bad"); e.textContent=""; }
+  eaWallet.addEventListener("input", function(){ eClrErr(eaWallet,eaWErr); });
+  eaEmail.addEventListener("input", function(){ eClrErr(eaEmail,eaEErr); });
+  function openEA(){ closeNav(); lastFocus=document.activeElement; formView.hidden=false; doneView.hidden=true; overlay.hidden=false; document.body.classList.add("ea-lock"); setTimeout(function(){ eaWallet.focus(); },40); }
+  function closeEA(){ overlay.hidden=true; document.body.classList.remove("ea-lock"); if(lastFocus&&lastFocus.focus) lastFocus.focus(); }
+  Array.prototype.forEach.call(document.querySelectorAll(".js-ea"), function(b){ b.addEventListener("click", openEA); });
+  $("eaClose").addEventListener("click", closeEA);
+  $("eaDoneClose").addEventListener("click", closeEA);
+  overlay.addEventListener("click", function(e){ if(e.target===overlay) closeEA(); });
+  document.addEventListener("keydown", function(e){ if(e.key==="Escape" && !overlay.hidden) closeEA(); });
+  eaForm.addEventListener("submit", function(e){
+    e.preventDefault();
+    var w=eaWallet.value.trim(), em=eaEmail.value.trim(), ok=true;
+    if(!isSolAddress(w)){ eSetErr(eaWallet,eaWErr,"Enter a valid Solana wallet address."); ok=false; } else eClrErr(eaWallet,eaWErr);
+    if(!emailRe.test(em)){ eSetErr(eaEmail,eaEErr,"Enter a valid email address."); ok=false; } else eClrErr(eaEmail,eaEErr);
+    if(!ok) return;
+    eaSubmit.disabled=true; eaSubmit.textContent="Submitting…";
+    try{ localStorage.setItem("kestrel_ea", JSON.stringify({wallet:w,email:em})); }catch(_){}
+    var p = EA_ENDPOINT ? fetch(EA_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify({wallet:w,email:em,source:"kestrelinvest.xyz/clawrena"})}).then(function(r){ if(!r.ok) throw new Error("x"); }) : Promise.resolve();
+    p.then(function(){ formView.hidden=true; doneView.hidden=false; setTimeout(function(){ $("eaDoneClose").focus(); },40); })
+     .catch(function(){ eaSubmit.disabled=false; eaSubmit.textContent="Request early access"; eSetErr(eaEmail,eaEErr,"Something went wrong — please try again."); });
+  });
+})();
+</script>
+
+<script src="elevate.js" defer></script>
+</body>
+</html>
